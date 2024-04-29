@@ -226,9 +226,7 @@ function principal() {
     //boton memorias
     let btnCategoriasMemoria = document.getElementById("btnCategoriasMemoria");
     btnCategoriasMemoria.onclick = () => filtrarPorCategoria(productos, "memoria RAM");
-
     // boton Buscar
-
     let btnBuscar = document.getElementById("btnBuscar");
     btnBuscar.onclick = () => buscarProductos(productos);
 
