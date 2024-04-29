@@ -40,7 +40,6 @@ let productos = [
     new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg"),
 ]
 
-
 //------------------------------------------------------------------
 
 
