@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Practica JS</title>
+</head>
+
+
+
+<body>
+    <!-- HEADER ----------------------------------------------------------------------------------------------->
+    <header>
+        <!-- titulo -->
+
+        <h1>CODERHARD</h1>
+
+
+        <!-- MENU -->
+        <div>
+            <nav>
+                <ul class="menu-horizontal">
+                    <li><a href="#" id="btnMenuPrincipalProductos">Productos</a></li>
+                    <li id="test"><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Donde estamos</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class=" barra-busqueda">
+            <form role="search">
+                <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" id="inputBuscar">
+                <button class="btn btn-outline-success" id="btnBuscar" type="submit">Buscar</button>
+            </form>
+        </div>
+
+    </header>
+
+    <!-- MAIN BODY -------------------------------------------------------------------------------------------->
+    <main>
+        <!-- Barra de búsqueda -->
+        <divclass="container-botones">
+            <nav>
+                <ul class="menu-horizontal">
+                    <li><a href="#" id="btnCategoriasMotherboard">Motherboards</a></li>
+                    <li><a href="#" id="btnCategoriasProcesador">Procesadores</a></li>
+                    <li><a href="#" id="btnCategoriasMemoria">Memorias</a></li>
+                </ul>
+            </nav>
+
+            <form class="opcion-sort" action="#">
+                <label class="custom-label" for="">Acomodar por:</label>
+                <select class="custom-select selectorSort" name="orden">
+                    <option value="precioMayorAMenor">Precio: Mayor a Menor</option>
+                    <option value="precioMenorAMayor">Precio: Menor a Mayor</option>
+                    <option value="NombreAaZ">Nombre: A-Z</option>
+                    <option value="NombreZaA">Nombre: Z-A</option>
+                </select>
+            </form>
+            </div>
+
+            <!-- tarjetas producto -->
+            <div id="contenedor-tarjetas"></div>
+    </main>
+
+    <!-- FOOTER ---------------------------------------------------------------------------------------------->
+    <footer>
+        <p>CoderHard@2024</p>
+    </footer>
+
+    <!-- scripts -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
