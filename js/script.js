@@ -40,8 +40,7 @@ let productos = [
     new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg"),
 ]
 
-// array creado por cada filtro que se hace en el sitio
-let productosListados = []
+
 //------------------------------------------------------------------
 
 
@@ -111,7 +110,6 @@ let opcionSort = (opcion) => {
         let opcionSeleccionada = opcion.value;
         switch (opcionSeleccionada) {
             case "precioMayorAMenor":
-                console.log("precioMayor")
                 listarPorPrecioMayor(productosListados);
                 break;
             case "precioMenorAMayor":
@@ -210,7 +208,6 @@ function principal() {
 
     //lista todos los productos
     listarTodos(productos);
-    buscarProductos
     // BOTONES
     //Botones Menu Principal
     let btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
