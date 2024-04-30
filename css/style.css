@@ -51,7 +51,7 @@ h1{
     border-radius: 8px;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 280px;
+    width: 285px;
     margin: 27px;
     min-height: 670px;
     max-height: 670px;
@@ -185,7 +185,6 @@ h1{
 }
 
 .form-control:focus {
-     
     outline: none;
     border: 1.8px solid #007bff;
 }
@@ -223,29 +222,29 @@ h1{
 }
 
 
-/* Estilo para el menú desplegable */
 .selectorSort {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 8px;
-    width: 100%;
-    max-width: 200px;
+    margin: 0 10px;
+    max-width: auto;
     font-size: 14px;
     background-color: #f9f9f9;
     outline: none;
     transition: border-color 0.3s ease;
-}
-
-.selectorSort option {
-    /* Estilos para las opciones */
     text-align: center; /* Centra el texto horizontalmente */
-    padding: 5px;
-}
-/* Estilo para el menú desplegable al hacer clic en él */
-.selectorSort:focus {
-    border-color: #007bff;
 }
 
+/* Estilo similar al de .tarjeta-producto */
+.selectorSort:hover {
+    border-color: #007bff; /* Cambia el color del borde al pasar el mouse */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+}
+
+/* Estilos para los elementos dentro de .selectorSort */
+.selectorSort select {
+    width: 100%; /* Opcional: Ajusta el ancho según tus necesidades */
+}
 
 .custom-button {
     padding: 10px 20px;
