@@ -220,33 +220,32 @@ h1{
 .opcion-sort {
     display: flex;
     justify-content: center;
-
-
 }
 
-/* Estilo para la etiqueta del menú desplegable */
-.custom-label {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
 
 /* Estilo para el menú desplegable */
-.custom-select {
+.selectorSort {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
     font-size: 14px;
     background-color: #f9f9f9;
     outline: none;
     transition: border-color 0.3s ease;
 }
 
+.selectorSort option {
+    /* Estilos para las opciones */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 5px;
+}
 /* Estilo para el menú desplegable al hacer clic en él */
-.custom-select:focus {
+.selectorSort:focus {
     border-color: #007bff;
 }
+
 
 .custom-button {
     padding: 10px 20px;
