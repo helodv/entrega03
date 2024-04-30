@@ -40,15 +40,14 @@ let productos = [
     new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg"),
 ]
 
+let productosListados = []
 //------------------------------------------------------------------
-
-
 // vacia el div antes de volver a listar
 function vaciarDiv() {
     let contenedorTarjetas = document.getElementById("contenedor-tarjetas");
     contenedorTarjetas.className = "container-tarjeta";
     contenedorTarjetas.innerHTML = "";
-    return contenedorTarjetas
+    return contenedorTarjetas;
 }
 
 // lista Todos los productos
@@ -57,18 +56,19 @@ function listarTodos(arr) {
     //vacia el div
     let contenedorTarjetas = vaciarDiv();
     //listar todos los productos
-    arr.forEach(producto => {
+    let productosFiltrados = arr.map(item => item);
+    productosFiltrados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
-            productosListados.push(producto);
         }
     });
+    productosListados.push(...productosFiltrados);
 }
 
 // Filtra por categorías
 function filtrarPorCategoria(arr, categoria) {
+    // vacia el array y el div
     productosListados = [];
-    //vacia el div
     let contenedorTarjetas = vaciarDiv();
     // Filtrar por categorías
     let productosFiltrados = arr.filter(item => item.categoria === categoria);
@@ -77,17 +77,16 @@ function filtrarPorCategoria(arr, categoria) {
             listarTarjeta(producto, contenedorTarjetas);
         }
     });
-    productosListados.push(...productosFiltrados)
+    productosListados.push(...productosFiltrados);
 }
 
 // busca productos
 function buscarProductos(arr) {
     productosListados = [];
-    // Vacía el div
     let contenedorTarjetas = vaciarDiv();
-    // Filtrar por búsqueda
     let inputBusqueda = document.getElementById("inputBuscar");
     let textoBusqueda = inputBusqueda.value.toLowerCase();
+    // Filtrar por búsqueda
     let productosFiltrados = arr.filter(producto => {
         let nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
         let categoriaCoincide = producto.categoria.toLowerCase().includes(textoBusqueda);
@@ -95,12 +94,17 @@ function buscarProductos(arr) {
         let modeloCoincide = producto.modelo.toLowerCase().includes(textoBusqueda);
         return nombreCoincide || categoriaCoincide || marcaCoincide || modeloCoincide;
     });
+
     productosFiltrados.forEach(producto => {
+        contenedorTarjetas = vaciarDiv();
         if (producto.stock > 0) {
+            contenedorTarjetas = vaciarDiv();
+            productosListados = [];
             listarTarjeta(producto, contenedorTarjetas);
+
         }
     });
-    productosListados.push(...productosFiltrados)
+    productosListados.push(...productosFiltrados);
 }
 
 // selector Sort acomodar por:
@@ -158,7 +162,7 @@ function listarPorPrecioMenor(arr) {
     let contenedorTarjetas = vaciarDiv();
     // Ordenar los productos por precio de menor a mayor
     let productosOrdenados = arr.sort((a, b) => a.precio - b.precio);
-    contenedorTarjetas.innerHTML = ""
+    contenedorTarjetas.innerHTML = "";
     productosOrdenados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
@@ -172,7 +176,7 @@ function listarPorPrecioMayor(arr) {
     let contenedorTarjetas = vaciarDiv();
     // Ordenar los productos por precio de mayor a menor
     let productosOrdenados = arr.sort((a, b) => b.precio - a.precio);
-    contenedorTarjetas.innerHTML = ""
+    contenedorTarjetas.innerHTML = "";
     productosOrdenados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
@@ -233,8 +237,7 @@ function principal() {
 
 //-----------------------------------------------------------------------------
 //Ejecucion
-principal()
-
+principal();
 
 
 

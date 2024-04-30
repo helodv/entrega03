@@ -42,7 +42,7 @@
     <!-- MAIN BODY -------------------------------------------------------------------------------------------->
     <main>
         <!-- Barra de búsqueda -->
-        <divclass="container-botones">
+        <div class="container-botones">
             <nav>
                 <ul class="menu-horizontal">
                     <li><a href="#" id="btnCategoriasMotherboard">Motherboards</a></li>
@@ -52,18 +52,19 @@
             </nav>
 
             <form class="opcion-sort" action="#">
-                <label class="custom-label" for="">Acomodar por:</label>
-                <select class="custom-select selectorSort" name="orden">
+                <select class="custom-select selectorSort" id="selectorSort" name="orden">
+                    <option value="" disabled selected>Acomodar por:</option>
                     <option value="precioMayorAMenor">Precio: Mayor a Menor</option>
                     <option value="precioMenorAMayor">Precio: Menor a Mayor</option>
                     <option value="NombreAaZ">Nombre: A-Z</option>
                     <option value="NombreZaA">Nombre: Z-A</option>
+
                 </select>
             </form>
-            </div>
+        </div>
 
-            <!-- tarjetas producto -->
-            <div id="contenedor-tarjetas"></div>
+        <!-- tarjetas producto -->
+        <div id="contenedor-tarjetas"></div>
     </main>
 
     <!-- FOOTER ---------------------------------------------------------------------------------------------->

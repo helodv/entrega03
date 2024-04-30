@@ -108,8 +108,7 @@ h1{
 
 .container-botones {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction:column;
     margin-top: 20px;
 }
 
@@ -218,9 +217,10 @@ h1{
 /* MENU SORT */
 
 
-.custom-form {
+.opcion-sort {
     display: flex;
-    justify-content: right;
+    justify-content: center;
+
 
 }
 
