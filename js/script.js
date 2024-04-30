@@ -46,29 +46,29 @@ let productosListados = []
 function vaciarDiv() {
     contenedorTarjetas = document.getElementById("container-tarjetas");
     contenedorTarjetas.innerHTML = "";
+
     return contenedorTarjetas;
 }
 
 // lista Todos los productos
 function listarTodos(arr) {
     productosListados = [];
-    //vacia el div
     vaciarDiv();
     //listar todos los productos
     let productosFiltrados = arr.map(item => item);
+    productosListados.push(...productosFiltrados);
     productosFiltrados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
         }
     });
-    productosListados.push(...productosFiltrados);
+
 }
 
 // Filtra por categorías
 function filtrarPorCategoria(arr, categoria) {
-    // vacia el array y el div
     productosListados = [];
-    let contenedorTarjetas = vaciarDiv();
+    vaciarDiv();
     // Filtrar por categorías
     let productosFiltrados = arr.filter(item => item.categoria === categoria);
     productosFiltrados.forEach(producto => {
@@ -80,11 +80,10 @@ function filtrarPorCategoria(arr, categoria) {
 }
 
 // busca productos
-function buscarProductos(arr) {
+function buscarProductos(arr, input) {
     productosListados = [];
     vaciarDiv();
-    let inputBusqueda = document.getElementById("inputBuscar");
-    let textoBusqueda = inputBusqueda.value.toLowerCase();
+    let textoBusqueda = input.value.toLowerCase();
     // Filtrar por búsqueda
     let productosFiltrados = arr.filter(producto => {
         let nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
@@ -222,13 +221,18 @@ function principal() {
     //boton memorias
     let btnCategoriasMemoria = document.getElementById("btnCategoriasMemoria");
     btnCategoriasMemoria.onclick = () => filtrarPorCategoria(productos, "memoria RAM");
-    // boton Buscar
-    let btnBuscar = document.getElementById("btnBuscar");
-    btnBuscar.onclick = () => buscarProductos(productos);
-
     // selector opciones sort
     let opcion = document.getElementsByClassName("selectorSort")[0];
     opcion.onclick = () => opcionSort(opcion);
+
+    //input busqueda
+    let inputBusqueda = document.getElementById("inputBuscar");
+
+    // boton Buscar
+    let btnBuscar = document.getElementById("btnBuscar");
+    btnBuscar.onclick = () => buscarProductos(productos, inputBusqueda);
+
+
 }
 
 //-----------------------------------------------------------------------------

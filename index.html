@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Practica JS</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>CoderHouse: JavaScript: Entrega 3</title>
 </head>
-
-
 
 <body>
     <!-- HEADER ----------------------------------------------------------------------------------------------->
     <header>
         <!-- titulo -->
-
         <h1>CODERHARD</h1>
-
-
         <!-- MENU -->
         <div>
             <nav>
@@ -29,14 +23,12 @@
                 </ul>
             </nav>
         </div>
-
         <div class=" barra-busqueda">
             <form role="search">
                 <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" id="inputBuscar">
                 <button class="btn btn-outline-success" id="btnBuscar" type="submit">Buscar</button>
             </form>
         </div>
-
     </header>
 
     <!-- MAIN BODY -------------------------------------------------------------------------------------------->
@@ -50,7 +42,6 @@
                     <li><a href="#" id="btnCategoriasMemoria">Memorias</a></li>
                 </ul>
             </nav>
-
             <form class="opcion-sort" action="#">
                 <select class="selectorSort" name="orden">
                     <option value="" disabled selected>Listar por:</option>
@@ -58,22 +49,19 @@
                     <option value="precioMenorAMayor">Precio: Menor a Mayor</option>
                     <option value="NombreAaZ">Nombre: A-Z</option>
                     <option value="NombreZaA">Nombre: Z-A</option>
-
                 </select>
             </form>
         </div>
-
         <!-- tarjetas producto -->
         <div id="container-tarjetas"></div>
     </main>
 
     <!-- FOOTER ---------------------------------------------------------------------------------------------->
     <footer>
-        <p>CoderHard@2024</p>
+        <p>CoderHard - 2024</p>
     </footer>
 
     <!-- scripts -->
     <script src="./js/script.js"></script>
 </body>
-
 </html>
