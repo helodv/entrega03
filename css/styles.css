@@ -130,7 +130,7 @@ h1{
 
 
 /* MENU PRINCIPAL ----------------------------------------------------------------------*/
-.menu-horizontal {
+.menu {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -138,15 +138,15 @@ h1{
     padding: 0;
 }
 
-.menu-horizontal li {
+.menu li {
     margin-right: 20px;
 }
 
-.menu-horizontal li:last-child {
+.menu li:last-child {
     margin-right: 0;
 }
 
-.menu-horizontal a {
+.menu a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
@@ -154,7 +154,7 @@ h1{
     transition: color 0.3s ease;
 }
 
-.menu-horizontal a:hover {
+.menu a:hover {
     color: #007bff;
 }
 

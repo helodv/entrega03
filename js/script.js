@@ -59,6 +59,7 @@ function listarTodos(arr) {
         }
     });
     productosListados.push(...productosFiltrados);
+
 }
 
 // Filtra por categorías
@@ -69,6 +70,7 @@ function filtrarPorCategoria(arr, categoria) {
     productosFiltrados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
+            return;
         }
     });
     productosListados.push(...productosFiltrados);
@@ -123,6 +125,7 @@ function listarPorNombreAZ(arr) {
     productosOrdenados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
+            return;
         };
     });
 }
@@ -134,6 +137,7 @@ function listarPorNombreZA(arr) {
     productosOrdenados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
+            return;
         };
     });
 }
@@ -182,6 +186,7 @@ function listarTarjeta(producto, contenedor) {
         </div>
         `;
     contenedor.appendChild(tarjetaProducto);
+    return
 }
 
 // funcion principal
@@ -204,26 +209,22 @@ function principal() {
     opcion.onclick = () => opcionSort(opcion);
     //input busqueda
     let inputBusqueda = document.getElementById("inputBuscar");
-   
-    inputBusqueda.addEventListener("keydown", function(event) {
+    inputBusqueda.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             let textoBusqueda = inputBusqueda.value.toLowerCase()
             buscarProductos(productos, textoBusqueda);
         }
     });
-
-    
-    // boton Buscar
+    //boton Buscar
     let btnBuscar = document.getElementById("btnBuscar");
     btnBuscar.onclick = () => {
         let textoBusqueda = inputBusqueda.value.toLowerCase()
         buscarProductos(productos, textoBusqueda);
     }
-
 }
 
-
-// Carrito
+/* EN PROGRESO
+// Carrito EN PROGRESO
 function agregarProductoAlCarrito(productos, carrito) {
     let opcionMenu = Number(prompt(listar(productos, "id", "nombre")));
     let productoBuscado = productos.find(producto => producto.id === opcionMenu);
@@ -249,6 +250,8 @@ function agregarProductoAlCarrito(productos, carrito) {
     console.log("total del carrito:", total);
 }
 
+
+// listar carrito En PROGRESO
 function listarCarrito(producto, contenedor) {
     let tarjetaProducto = document.createElement("div");
     tarjetaProducto.className = "tarjeta-carrito";
@@ -260,13 +263,9 @@ function listarCarrito(producto, contenedor) {
         <p class="tarjeta-carrito-cantidad">$${producto.precio}</p>
         <p class="tarjeta-carrito-subtotal">$${producto.precio}</p>
         <button class="btn-carrito-eliminar btn-elim">Ver</button>
-
         `;
     contenedor.appendChild(tarjetaProducto);
-}
-
-
-
+} */
 
 principal();
 
