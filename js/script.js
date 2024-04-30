@@ -96,10 +96,7 @@ function buscarProductos(arr) {
     });
 
     productosFiltrados.forEach(producto => {
-        contenedorTarjetas = vaciarDiv();
         if (producto.stock > 0) {
-            contenedorTarjetas = vaciarDiv();
-            productosListados = [];
             listarTarjeta(producto, contenedorTarjetas);
 
         }
