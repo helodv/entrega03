@@ -59,6 +59,7 @@ function listarTodos(arr) {
         }
     });
     productosListados.push(...productosFiltrados);
+    window.location.href = '?#';
 
 }
 
