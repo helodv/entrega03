@@ -109,7 +109,7 @@ h1{
 .container-botones {
     display: flex;
     flex-direction:column;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .btn-producto {
@@ -168,7 +168,8 @@ h1{
     justify-content: center;
     background-color: #f9f9f9;
     padding: 20px;
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 
 }
 
