@@ -1,4 +1,16 @@
+/* fonts */
 
+
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .share-tech-regular {
+    font-family: "Share Tech", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 
 /* GENERAL */
 html{
@@ -25,14 +37,29 @@ h1{
     text-align: center;
     background-color: #f9f9f9;
     border-radius: 8px;
-    font-size: 40px;
+    font-size: 120px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-decoration-line: underline;
+
 }
 
 .linea-separadora-main {
     height: 1px;
     background-color: #cccccc;
-    margin: 30px;
+    margin: 50px;
 
+}
+
+.color-change {
+    font-size: 24px;
+    color: blue;
+    transition: color 0.5s; /* Transición de color durante 0.5 segundos */
+}
+
+/* Cambio de color al pasar el mouse sobre el texto */
+.color-change:hover {
+    color: red;
 }
 /* Tarjeta de producto --------------------------------------------------------*/
 
@@ -134,6 +161,7 @@ h1{
     justify-content: center;
     align-items: center;
     padding: 0;
+    margin-top: 0px;
 
 
 }
@@ -169,6 +197,7 @@ h1{
     background-color: #f9f9f9;
     margin-left: 20px;
     margin-right: 20px;
+    margin-bottom: 10px;
 
 }
 
