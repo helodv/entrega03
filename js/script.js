@@ -44,8 +44,7 @@ let productosListados = []
 //------------------------------------------------------------------
 // vacia el div antes de volver a listar
 function vaciarDiv() {
-    let contenedorTarjetas = document.getElementById("contenedor-tarjetas");
-    contenedorTarjetas.className = "container-tarjeta";
+    contenedorTarjetas = document.getElementById("container-tarjetas");
     contenedorTarjetas.innerHTML = "";
     return contenedorTarjetas;
 }
@@ -54,7 +53,7 @@ function vaciarDiv() {
 function listarTodos(arr) {
     productosListados = [];
     //vacia el div
-    let contenedorTarjetas = vaciarDiv();
+    vaciarDiv();
     //listar todos los productos
     let productosFiltrados = arr.map(item => item);
     productosFiltrados.forEach(producto => {
@@ -83,7 +82,7 @@ function filtrarPorCategoria(arr, categoria) {
 // busca productos
 function buscarProductos(arr) {
     productosListados = [];
-    let contenedorTarjetas = vaciarDiv();
+    vaciarDiv();
     let inputBusqueda = document.getElementById("inputBuscar");
     let textoBusqueda = inputBusqueda.value.toLowerCase();
     // Filtrar por búsqueda
@@ -130,7 +129,7 @@ let opcionSort = (opcion) => {
 // NOMBRE: A-Z
 function listarPorNombreAZ(arr) {
     //vacia el div
-    let contenedorTarjetas = vaciarDiv();
+    vaciarDiv();
     // Ordena los productos alfabéticamente por nombre
     let productosOrdenados = arr.sort((a, b) => a.nombre.localeCompare(b.nombre));
     productosOrdenados.forEach(producto => {
@@ -143,7 +142,7 @@ function listarPorNombreAZ(arr) {
 // NOMBRE: Z-A
 function listarPorNombreZA(arr) {
     //vacia el div
-    let contenedorTarjetas = vaciarDiv();
+    vaciarDiv();
     // Ordenar los productos alfabéticamente de forma descendente (Z-A)
     let productosOrdenados = arr.sort((a, b) => b.nombre.localeCompare(a.nombre));
     productosOrdenados.forEach(producto => {
@@ -156,7 +155,7 @@ function listarPorNombreZA(arr) {
 // PRECIO: MENOR a MAYOR
 function listarPorPrecioMenor(arr) {
     //vacia el div
-    let contenedorTarjetas = vaciarDiv();
+    vaciarDiv();
     // Ordenar los productos por precio de menor a mayor
     let productosOrdenados = arr.sort((a, b) => a.precio - b.precio);
     contenedorTarjetas.innerHTML = "";
@@ -170,7 +169,7 @@ function listarPorPrecioMenor(arr) {
 // PRECIO: MAYOR a MENOR
 function listarPorPrecioMayor(arr) {
     //vacia el div
-    let contenedorTarjetas = vaciarDiv();
+    vaciarDiv();
     // Ordenar los productos por precio de mayor a menor
     let productosOrdenados = arr.sort((a, b) => b.precio - a.precio);
     contenedorTarjetas.innerHTML = "";
