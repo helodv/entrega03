@@ -52,15 +52,12 @@ function listarTodos(arr) {
     productosListados = [];
     vaciarDiv();
     let productosFiltrados = arr.map(item => item);
-    productosListados.push(...productosFiltrados);
     productosFiltrados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
         }
     });
     productosListados.push(...productosFiltrados);
-    window.location.href = '?#';
-
 }
 
 // Filtra por categorías
@@ -126,7 +123,6 @@ function listarPorNombreAZ(arr) {
     productosOrdenados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
-            return;
         };
     });
 }
@@ -138,7 +134,6 @@ function listarPorNombreZA(arr) {
     productosOrdenados.forEach(producto => {
         if (producto.stock > 0) {
             listarTarjeta(producto, contenedorTarjetas);
-            return;
         };
     });
 }
@@ -192,6 +187,7 @@ function listarTarjeta(producto, contenedor) {
 
 // funcion principal
 function principal() {
+    window.location.href = '?#';
     listarTodos(productos);
     //boton todos los productos
     let btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
