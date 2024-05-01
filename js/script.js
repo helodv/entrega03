@@ -9,8 +9,8 @@ class Producto {
             this.stock = stock,
             this.precio = precio,
             this.imagen = imagen
-    }
-}
+    };
+};
 
 // array de productos
 let productos = [
@@ -37,24 +37,23 @@ let productos = [
     new Producto(20, "AMD Radeon RX 7900 XTX", "AMD", "Radeon RX 7900 XTX", "graphics card", 3, 12999, "../assets/images/productos/motherboard_generic.jpg"),
     new Producto(21, "Seagate Barracuda 4TB", "Seagate", "Barracuda", "almacenamiento", 5, 8999, "../assets/images/productos/motherboard_generic.jpg"),
     new Producto(22, "Western Digital Blue 2TB", "Western Digital", "Blue", "almacenamiento", 8, 6999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg"),
-]
+    new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg")
+];
 
 //------------------------------------------------------------------
 
-// vacia el div y el array de productos listados.
+// vacia el div
 function vaciarDiv() {
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.innerHTML = "";
-    productosListados = [];
     return contenedorTarjetas;
 }
 
 // lista Todos los productos
 function listarTodos(productos, carrito) {
-
     vaciarDiv();
-    let productosOrdenados = productos.map(item => item);
+    productosListados = [];
+    let productosOrdenados = productos.map(producto => producto);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
 }
@@ -62,6 +61,7 @@ function listarTodos(productos, carrito) {
 // Filtra por categorías
 function filtrarPorCategoria(productos, categoria, carrito) {
     vaciarDiv();
+    productosListados = [];
     let productosOrdenados = productos.filter(producto => producto.categoria === categoria);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
@@ -70,6 +70,7 @@ function filtrarPorCategoria(productos, categoria, carrito) {
 // busca productos
 function buscarProductos(productos, textoBusqueda, carrito) {
     vaciarDiv();
+    productosListados = [];
     let productosOrdenados = productos.filter(producto => {
         let nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
         let categoriaCoincide = producto.categoria.toLowerCase().includes(textoBusqueda);
@@ -82,59 +83,39 @@ function buscarProductos(productos, textoBusqueda, carrito) {
 }
 
 // selector Sort acomodar por:
-let opcionSort = (opcion, carrito) => {
+const opcionSort = (opcion, carrito) => {
     opcion.addEventListener("change", () => {
         let opcionSeleccionada = opcion.value;
         switch (opcionSeleccionada) {
             case "precioMayorAMenor":
-                listarPorPrecioMayor(productosListados, carrito);
+                vaciarDiv();
+                productosListados.sort((a, b) => b.precio - a.precio);
+                listarTarjeta(productosListados, contenedorTarjetas, carrito);
+                productosListados.push;
                 break;
             case "precioMenorAMayor":
-                listarPorPrecioMenor(productosListados, carrito);
+                vaciarDiv();
+                productosListados.sort((a, b) => a.precio - b.precio);
+                listarTarjeta(productosListados, contenedorTarjetas, carrito);
+                productosListados.push;
                 break;
             case "NombreAaZ":
-                listarPorNombreAZ(productosListados, carrito);
+                vaciarDiv();
+                productosListados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                listarTarjeta(productosListados, contenedorTarjetas, carrito);
+                productosListados.push;
                 break;
             case "NombreZaA":
-                listarPorNombreZA(productosListados, carrito);
+                vaciarDiv();
+                productosListados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+                listarTarjeta(productosListados, contenedorTarjetas, carrito);
+                productosListados.push(...productosOrdenados);
                 break;
             default:
                 break;
         }
     });
 };
-
-// NOMBRE: A-Z
-function listarPorNombreAZ(productos, carrito) {
-    vaciarDiv();
-    let productosOrdenados = productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
-    productosListados.push(...productosOrdenados);
-}
-
-// NOMBRE: Z-A
-function listarPorNombreZA(productos, carrito) {
-    vaciarDiv();
-    let productosOrdenados = productos.sort((a, b) => b.nombre.localeCompare(a.nombre));
-    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
-    productosListados.push(...productosOrdenados);
-}
-
-// PRECIO: MENOR a MAYOR
-function listarPorPrecioMenor(productos, carrito) {
-    vaciarDiv();
-    let productosOrdenados = productos.sort((a, b) => a.precio - b.precio);
-    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
-    productosListados.push(...productosOrdenados);
-}
-
-// PRECIO: MAYOR a MENOR
-function listarPorPrecioMayor(productos, carrito) {
-    vaciarDiv();
-    productosOrdenados = productos.sort((a, b) => b.precio - a.precio);
-    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
-    productosListados.push(...productosOrdenados);
-}
 
 //generador de tarjeta
 function listarTarjeta(productos, contenedor, carrito) {
@@ -172,7 +153,7 @@ function agregarProductoAlCarrito(e, carrito, productos) {
     if (productoExisteEnCarrito !== -1) {
         carrito[productoExisteEnCarrito].cantidad++
         carrito[productoExisteEnCarrito].subtotal = carrito[productoExisteEnCarrito].precio * carrito[productoExisteEnCarrito].cantidad
-    }else{
+    } else {
         carrito.push({
             id: productoBuscado.id,
             imagen: productoBuscado.imagen,
@@ -189,9 +170,8 @@ function agregarProductoAlCarrito(e, carrito, productos) {
 // listar carrito
 function listarCarrito(carrito, contenedor) {
     contenedorTarjetas = document.getElementById("containerTarjetas");
-    contenedorTarjetas.innerHTML =""
-
-    carrito.forEach(producto =>{
+    contenedorTarjetas.innerHTML = ""
+    carrito.forEach(producto => {
         let tarjetaProducto = document.createElement("div");
         tarjetaProducto.className = "tarjeta-producto-carrito";
         tarjetaProducto.innerHTML =
@@ -212,7 +192,6 @@ function principal() {
     let carrito = [];
 
     listarTodos(productos, carrito);
-
     //boton carrito
     let btnCarrito = document.getElementById("btnCarrito")
     btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas)
@@ -245,7 +224,6 @@ function principal() {
         let textoBusqueda = inputBusqueda.value.toLowerCase()
         buscarProductos(productos, textoBusqueda, carrito);
     }
-
 }
 
 principal();
