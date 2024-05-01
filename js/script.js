@@ -169,7 +169,6 @@ function listarTarjeta(producto, contenedor) {
     tarjetaProducto.innerHTML =
         `
         <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-producto-imagen">
-        <div class="linea-separadora"></div>
         <h3 class="tarjeta-producto-nombre">${producto.nombre}</h3>
         <p class="tarjeta-producto-detalles">Marca: <span class="brand">${producto.marca}</span></p>
         <p class="tarjeta-producto-detalles">Modelo: <span class="model">${producto.modelo}</span></p>
