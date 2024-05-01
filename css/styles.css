@@ -15,7 +15,7 @@
 html {
     margin: 0;
     padding: 0;
-    background-color: #333;
+    background-color:whitesmoke;
     background-blend-mode: color-dodge;
 }
 
@@ -55,7 +55,7 @@ h1 {
 
 /* Tarjeta de producto --------------------------------------------------------*/
 
-#container-tarjetas {
+#containerTarjetas {
     display: flex;
     flex-wrap: wrap;
     background-color: #f9f9f9;
@@ -76,6 +76,12 @@ h1 {
     flex-direction: column;
     align-items: center;
 
+}
+
+.tarjeta-producto-carrito {
+    display: flex;
+    width: 50%;
+    justify-content: center;
 }
 
 .tarjeta-producto-imagen {
@@ -289,12 +295,12 @@ h1 {
 }
 
 .icono-carrito {
-    font-size: 36px; /* Ajusta el tamaño del icono según tus preferencias */
+    font-size: 30px; /* Ajusta el tamaño del icono según tus preferencias */
 }
 
 
 #btnCarrito {
-    padding: 10px 25px;
+    padding: 10px 20px;
     background-color:#ccc;
     border: none;
     color: #fff;
@@ -314,8 +320,6 @@ h1 {
     justify-content: right;/* Alinea los elementos al centro y a la derecha */
     align-items: center; /* Alinea verticalmente los elementos */
     margin-right: 1%;
-
-
 }
 
 

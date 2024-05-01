@@ -39,76 +39,65 @@ let productos = [
     new Producto(22, "Western Digital Blue 2TB", "Western Digital", "Blue", "almacenamiento", 8, 6999, "../assets/images/productos/motherboard_generic.jpg"),
     new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg"),
 ]
+
+
 //------------------------------------------------------------------
 // vacia el div antes de volver a listar
 function vaciarDiv() {
-    contenedorTarjetas = document.getElementById("container-tarjetas");
+    contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.innerHTML = "";
     return contenedorTarjetas;
 }
 
 // lista Todos los productos
-function listarTodos(arr) {
+function listarTodos(productos, carrito) {
     productosListados = [];
     vaciarDiv();
-    let productosFiltrados = arr.map(item => item);
-    productosFiltrados.forEach(producto => {
-        if (producto.stock > 0) {
-            listarTarjeta(producto, contenedorTarjetas);
-        }
-    });
-    productosListados.push(...productosFiltrados);
+    let productosOrdenados = productos.map(item => item);
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
+    productosListados.push(...productosOrdenados);
 }
 
 // Filtra por categorías
-function filtrarPorCategoria(arr, categoria) {
+function filtrarPorCategoria(productos, categoria, carrito) {
     productosListados = [];
     vaciarDiv();
-    let productosFiltrados = arr.filter(item => item.categoria === categoria);
-    productosFiltrados.forEach(producto => {
-        if (producto.stock > 0) {
-            listarTarjeta(producto, contenedorTarjetas);
-            return;
-        }
-    });
-    productosListados.push(...productosFiltrados);
+    let productosOrdenados = productos.filter(producto => producto.categoria === categoria);
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
+    productosListados.push(...productosOrdenados);
 }
 
 // busca productos
-function buscarProductos(arr, textoBusqueda) {
+function buscarProductos(productos, textoBusqueda, carrito) {
     productosListados = [];
     vaciarDiv();
-    let productosFiltrados = arr.filter(producto => {
+    let productosOrdenados = productos.filter(producto => {
         let nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
         let categoriaCoincide = producto.categoria.toLowerCase().includes(textoBusqueda);
         let marcaCoincide = producto.marca.toLowerCase().includes(textoBusqueda);
         let modeloCoincide = producto.modelo.toLowerCase().includes(textoBusqueda);
         return nombreCoincide || categoriaCoincide || marcaCoincide || modeloCoincide;
     });
-    productosFiltrados.forEach(producto => {
-        if (producto.stock > 0) {
-            listarTarjeta(producto, contenedorTarjetas);
-        }
-    });
-    productosListados.push(...productosFiltrados);
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
+    productosListados.push(...productosOrdenados);
 }
 
 // selector Sort acomodar por:
-let opcionSort = (opcion) => {
+let opcionSort = (opcion, carrito) => {
     opcion.addEventListener("change", () => {
         let opcionSeleccionada = opcion.value;
         switch (opcionSeleccionada) {
             case "precioMayorAMenor":
-                listarPorPrecioMayor(productosListados);
+                listarPorPrecioMayor(productosListados, carrito);
                 break;
             case "precioMenorAMayor":
-                listarPorPrecioMenor(productosListados);
+                listarPorPrecioMenor(productosListados, carrito);
                 break;
             case "NombreAaZ":
-                listarPorNombreAZ(productosListados);
+                listarPorNombreAZ(productosListados, carrito);
                 break;
             case "NombreZaA":
-                listarPorNombreZA(productosListados);
+                listarPorNombreZA(productosListados, carrito);
                 break;
             default:
                 break;
@@ -117,151 +106,160 @@ let opcionSort = (opcion) => {
 };
 
 // NOMBRE: A-Z
-function listarPorNombreAZ(arr) {
+function listarPorNombreAZ(productos, carrito) {
     vaciarDiv();
-    let productosOrdenados = arr.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    productosOrdenados.forEach(producto => {
-        if (producto.stock > 0) {
-            listarTarjeta(producto, contenedorTarjetas);
-        };
-    });
+    productosListados = [];
+    let productosOrdenados = productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
+    productosListados.push(...productosOrdenados);
 }
 
 // NOMBRE: Z-A
-function listarPorNombreZA(arr) {
+function listarPorNombreZA(productos, carrito) {
     vaciarDiv();
-    let productosOrdenados = arr.sort((a, b) => b.nombre.localeCompare(a.nombre));
-    productosOrdenados.forEach(producto => {
-        if (producto.stock > 0) {
-            listarTarjeta(producto, contenedorTarjetas);
-        };
-    });
+    productosListados = [];
+    let productosOrdenados = productos.sort((a, b) => b.nombre.localeCompare(a.nombre));
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
+    productosListados.push(...productosOrdenados);
 }
 
 // PRECIO: MENOR a MAYOR
-function listarPorPrecioMenor(arr) {
+function listarPorPrecioMenor(productos, carrito) {
     vaciarDiv();
-    let productosOrdenados = arr.sort((a, b) => a.precio - b.precio);
-    contenedorTarjetas.innerHTML = "";
-    productosOrdenados.forEach(producto => {
-        if (producto.stock > 0) {
-            listarTarjeta(producto, contenedorTarjetas);
-        }
-    });
+    productosListados = [];
+    let productosOrdenados = productos.sort((a, b) => a.precio - b.precio);
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
+    productosListados.push(...productosOrdenados);
 }
 
 // PRECIO: MAYOR a MENOR
-function listarPorPrecioMayor(arr) {
+function listarPorPrecioMayor(productos, carrito) {
     vaciarDiv();
-    let productosOrdenados = arr.sort((a, b) => b.precio - a.precio);
-    contenedorTarjetas.innerHTML = "";
-    productosOrdenados.forEach(producto => {
-        if (producto.stock > 0) {
-            listarTarjeta(producto, contenedorTarjetas);
-        }
-    });
+    productosListados = [];
+    productosOrdenados = productos.sort((a, b) => b.precio - a.precio);
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
+    productosListados.push(...productosOrdenados);
 }
 
 //generador de tarjeta
-function listarTarjeta(producto, contenedor) {
-    let tarjetaProducto = document.createElement("div");
-    tarjetaProducto.className = "tarjeta-producto";
-    tarjetaProducto.innerHTML =
-        `
-        <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-producto-imagen">
-        <h3 class="tarjeta-producto-nombre">${producto.nombre}</h3>
-        <p class="tarjeta-producto-detalles">Marca: <span class="brand">${producto.marca}</span></p>
-        <p class="tarjeta-producto-detalles">Modelo: <span class="model">${producto.modelo}</span></p>
-        <p class="tarjeta-producto-detalles">Categoría: <span class="model">${producto.categoria}</span></p>
-        <p class="tarjeta-producto-precio">$${producto.precio}</p>
-        <div class="linea-separadora"></div>
-        <div class="container-botones">
-            <button class="btn-producto btn-ver-producto">Ver</button>
-            <button class="btn-producto btn-agregar-al-carrito">Agregar al carrito</button>
-        </div>
-        `;
-    contenedor.appendChild(tarjetaProducto);
-    return
+function listarTarjeta(productos, contenedor, carrito) {
+    productos.forEach(producto => {
+        if (producto.stock > 0) {
+            let tarjetaProducto = document.createElement("div");
+            tarjetaProducto.className = "tarjeta-producto";
+            tarjetaProducto.innerHTML =
+                `
+                <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-producto-imagen">
+                <h3 class="tarjeta-producto-nombre">${producto.nombre}</h3>
+                <p class="tarjeta-producto-detalles">Marca: <span class="brand">${producto.marca}</span></p>
+                <p class="tarjeta-producto-detalles">Modelo: <span class="model">${producto.modelo}</span></p>
+                <p class="tarjeta-producto-detalles">Categoría: <span class="model">${producto.categoria}</span></p>
+                <p class="tarjeta-producto-precio">$${producto.precio}</p>
+                <div class="linea-separadora"></div>
+                <div class="container-botones">
+                    <button class="btn-producto btn-ver-producto">Ver</button>
+                    <button class="btn-producto btn-agregar-al-carrito" id=${producto.id}>Agregar al carrito</button>
+                </div>
+                `;
+            contenedor.appendChild(tarjetaProducto);
+            let btnAgregarAlCarrito = document.getElementById(producto.id);
+            btnAgregarAlCarrito.addEventListener("click", (e) => agregarProductoAlCarrito(e, carrito, productos));
+        }
+    })
+
 }
+
+
+
+
+// Carrito EN PROGRESO
+function agregarProductoAlCarrito(e, carrito, productos) {
+    let idProductoAgregado = Number(e.target.id);
+
+    let productoExisteEnCarrito = carrito.findIndex(producto => producto.id === idProductoAgregado);
+    let productoBuscado = productos.find(producto => producto.id === idProductoAgregado);
+    if (productoExisteEnCarrito !== -1) {
+        carrito[productoExisteEnCarrito].cantidad++
+        carrito[productoExisteEnCarrito].subtotal = carrito[productoExisteEnCarrito].precio * carrito[productoExisteEnCarrito].cantidad
+    }else{
+        carrito.push({
+            id: productoBuscado.id,
+            imagen: productoBuscado.imagen,
+            nombre: productoBuscado.nombre,
+            precio: productoBuscado.precio,
+            cantidad: 1
+        })
+    }
+    console.log("carrito")
+    return carrito;
+
+}
+
+
+
+
+// listar carrito En PROGRESO
+function listarCarrito(carrito, contenedor) {
+    contenedorTarjetas = document.getElementById("containerTarjetas");
+    contenedorTarjetas.innerHTML =""
+
+    carrito.forEach(producto =>{
+        let tarjetaProducto = document.createElement("div");
+        tarjetaProducto.className = "tarjeta-producto-carrito";
+        tarjetaProducto.innerHTML =
+            `
+            <h3 class="tarjeta-carrito-nombre">${producto.nombre}</h3>
+            <p class="tarjeta-carrito-precio">$${producto.precio}</p>
+            `;
+        contenedor.appendChild(tarjetaProducto);
+    });
+}
+
+
+
 
 // funcion principal
 function principal() {
     window.location.href = '?#';
-    listarTodos(productos);
+    let carrito = []
+    listarTodos(productos, carrito);
     //boton todos los productos
     let btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
-    btnMenuPrincipalProductos.onclick = () => listarTodos(productos);
+    btnMenuPrincipalProductos.onclick = () => listarTodos(productos, carrito);
     //boton motherboards
     let btnCategoriasMotherboards = document.getElementById("btnCategoriasMotherboard");
-    btnCategoriasMotherboards.onclick = () => filtrarPorCategoria(productos, "motherboard");
+    btnCategoriasMotherboards.onclick = () => filtrarPorCategoria(productos, "motherboard", carrito);
     //boton procesadores
     let btnCategoriasProcesador = document.getElementById("btnCategoriasProcesador");
-    btnCategoriasProcesador.onclick = () => filtrarPorCategoria(productos, "procesador");
+    btnCategoriasProcesador.onclick = () => filtrarPorCategoria(productos, "procesador", carrito);
     //boton memorias
     let btnCategoriasMemoria = document.getElementById("btnCategoriasMemoria");
-    btnCategoriasMemoria.onclick = () => filtrarPorCategoria(productos, "memoria RAM");
+    btnCategoriasMemoria.onclick = () => filtrarPorCategoria(productos, "memoria RAM", carrito);
     // selector opciones sort
     let opcion = document.getElementsByClassName("selectorSort")[0];
-    opcion.onclick = () => opcionSort(opcion);
+    opcion.onclick = () => opcionSort(opcion, carrito);
     //input busqueda
     let inputBusqueda = document.getElementById("inputBuscar");
     inputBusqueda.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             let textoBusqueda = inputBusqueda.value.toLowerCase()
-            buscarProductos(productos, textoBusqueda);
+            buscarProductos(productos, textoBusqueda, carrito);
         }
     });
     //boton Buscar
     let btnBuscar = document.getElementById("btnBuscar");
     btnBuscar.onclick = () => {
         let textoBusqueda = inputBusqueda.value.toLowerCase()
-        buscarProductos(productos, textoBusqueda);
+        buscarProductos(productos, textoBusqueda, carrito);
     }
-}
-
-/* EN PROGRESO
-// Carrito EN PROGRESO
-function agregarProductoAlCarrito(productos, carrito) {
-    let opcionMenu = Number(prompt(listar(productos, "id", "nombre")));
-    let productoBuscado = productos.find(producto => producto.id === opcionMenu);
-    if (productoBuscado) {
-        let productoEnCarrito = carrito.findIndex(producto => producto.id === opcionMenu);
-        if (productoEnCarrito !== -1) {
-            carrito[productoEnCarrito].unidades++;
-            carrito[productoEnCarrito].subtotal = carrito[productoEnCarrito].precioPorUnidad * carrito[productoEnCarrito].unidades;
-        } else {
-            carrito.push({
-                id: productoBuscado.id,
-                nombre: productoBuscado.nombre,
-                precioPorUnidad: productoBuscado.precio,
-                unidades: 1,
-                subtotal: productoBuscado.precio
-            });
-        }
-    } else {
-        alert("El ID no existe");
-    }
-    let total = carrito.reduce((total, producto) => total + producto.subtotal, 0);
-    console.log("Carrito actualizado:", carrito);
-    console.log("total del carrito:", total);
+    //boton carrito
+    let btnCarrito = document.getElementById("btnCarrito")
+    btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas)
 }
 
 
-// listar carrito En PROGRESO
-function listarCarrito(producto, contenedor) {
-    let tarjetaProducto = document.createElement("div");
-    tarjetaProducto.className = "tarjeta-carrito";
-    tarjetaProducto.innerHTML =
-        `
-        <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-carrito-imagen">
-        <h3 class="tarjeta-carrito-nombre">${producto.nombre}</h3>
-        <p class="tarjeta-carrito-precio">$${producto.precio}</p>
-        <p class="tarjeta-carrito-cantidad">$${producto.precio}</p>
-        <p class="tarjeta-carrito-subtotal">$${producto.precio}</p>
-        <button class="btn-carrito-eliminar btn-elim">Ver</button>
-        `;
-    contenedor.appendChild(tarjetaProducto);
-} */
+
+
 
 principal();
 
