@@ -69,7 +69,7 @@ h1 {
     padding: 20px;
     width: 285px;
     margin: 27px;
-    min-height: 670px;
+    min-height: 550px;
     max-height: 670px;
     display: flex;
     justify-content: flex-start;
@@ -131,7 +131,7 @@ h1 {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
-    margin-bottom: 10px;
+
 
 
 }
