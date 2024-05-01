@@ -1,24 +1,24 @@
 /* fonts */
-
-
-  .roboto-bold {
+.roboto-bold {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-style: normal;
-  }
-  .share-tech-regular {
+}
+
+.share-tech-regular {
     font-family: "Share Tech", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
 /* GENERAL */
-html{
+html {
     margin: 0;
     padding: 0;
-    background-color:#333;
-    background-blend-mode:color-dodge;
+    background-color: #333;
+    background-blend-mode: color-dodge;
 }
+
 body {
     display: flex;
     flex-wrap: wrap;
@@ -32,10 +32,10 @@ body {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-    
+
 }
 
-h1{
+h1 {
     text-align: center;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -72,7 +72,7 @@ h1{
     min-height: 670px;
     max-height: 670px;
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
 
@@ -80,40 +80,43 @@ h1{
 
 .tarjeta-producto-imagen {
     max-width: 100%;
+    background-color: white;
+    color: white;
     height: auto;
     border-radius: 4px;
     margin-bottom: 10px;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.1);
-    
+
 }
 
 .tarjeta-producto-nombre {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 4px;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    max-width: 100%; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .tarjeta-producto-detalles {
     font-size: 14px;
     color: #777;
     margin-bottom: 2px;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    max-width: 100%; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
+
 .tarjeta-producto-precio {
     font-size: 20px;
     font-weight: bold;
-    color:#333;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    max-width: 100%; 
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .linea-separadora {
@@ -125,10 +128,10 @@ h1{
 
 .container-botones {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     margin-top: 5px;
     margin-bottom: 10px;
-    
+
 
 }
 
@@ -142,11 +145,11 @@ h1{
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
-    
+
 }
 
 .btn-producto:hover {
-    background-color:#007bff;
+    background-color: #007bff;
 }
 
 
@@ -202,11 +205,11 @@ h1{
     padding: 14px;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
-    width: 80%; 
-    min-width: 700px; 
-    margin-right: 0; 
+    width: 80%;
+    min-width: 700px;
+    margin-right: 0;
     min-height: 100%;
-    
+
 }
 
 .form-control:focus {
@@ -231,22 +234,18 @@ h1{
 
 @media (max-width: 768px) {
     .form-control {
-        width: 100%; 
-        min-width: auto; 
+        width: 100%;
+        min-width: auto;
         max-width: 61%;
     }
 }
 
-
 /* MENU SORT */
-
-
 .opcion-sort {
     display: flex;
     justify-content: center;
     margin: px;
 }
-
 
 .selectorSort {
     padding: 7px;
@@ -258,23 +257,24 @@ h1{
     background-color: #f9f9f9;
     outline: none;
     transition: border-color 0.3s ease;
-    text-align: center; /* Centra el texto horizontalmente */
+    text-align: center;
 }
 
-/* Estilo similar al de .tarjeta-producto */
 .selectorSort:hover {
-    border-color: #0056b3;; /* Cambia el color del borde al pasar el mouse */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+    border-color: #0056b3;
+    ;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para los elementos dentro de .selectorSort */
 .selectorSort select {
-    width: 100%; /* Opcional: Ajusta el ancho según tus necesidades */
+    width: 100%;
+
 }
 
 .custom-button {
     padding: 10px 20px;
-    background-color: #333;;
+    background-color: #333;
+    ;
     border: none;
     color: #fff;
     border-radius: 8px;
