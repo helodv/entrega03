@@ -40,18 +40,19 @@ let productos = [
     new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg"),
 ]
 
-
 //------------------------------------------------------------------
-// vacia el div antes de volver a listar
+
+// vacia el div y el array de productos listados.
 function vaciarDiv() {
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.innerHTML = "";
+    productosListados = [];
     return contenedorTarjetas;
 }
 
 // lista Todos los productos
 function listarTodos(productos, carrito) {
-    productosListados = [];
+
     vaciarDiv();
     let productosOrdenados = productos.map(item => item);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
@@ -60,7 +61,6 @@ function listarTodos(productos, carrito) {
 
 // Filtra por categorías
 function filtrarPorCategoria(productos, categoria, carrito) {
-    productosListados = [];
     vaciarDiv();
     let productosOrdenados = productos.filter(producto => producto.categoria === categoria);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
@@ -69,7 +69,6 @@ function filtrarPorCategoria(productos, categoria, carrito) {
 
 // busca productos
 function buscarProductos(productos, textoBusqueda, carrito) {
-    productosListados = [];
     vaciarDiv();
     let productosOrdenados = productos.filter(producto => {
         let nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
@@ -108,7 +107,6 @@ let opcionSort = (opcion, carrito) => {
 // NOMBRE: A-Z
 function listarPorNombreAZ(productos, carrito) {
     vaciarDiv();
-    productosListados = [];
     let productosOrdenados = productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
@@ -117,7 +115,6 @@ function listarPorNombreAZ(productos, carrito) {
 // NOMBRE: Z-A
 function listarPorNombreZA(productos, carrito) {
     vaciarDiv();
-    productosListados = [];
     let productosOrdenados = productos.sort((a, b) => b.nombre.localeCompare(a.nombre));
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
@@ -126,7 +123,6 @@ function listarPorNombreZA(productos, carrito) {
 // PRECIO: MENOR a MAYOR
 function listarPorPrecioMenor(productos, carrito) {
     vaciarDiv();
-    productosListados = [];
     let productosOrdenados = productos.sort((a, b) => a.precio - b.precio);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
@@ -135,7 +131,6 @@ function listarPorPrecioMenor(productos, carrito) {
 // PRECIO: MAYOR a MENOR
 function listarPorPrecioMayor(productos, carrito) {
     vaciarDiv();
-    productosListados = [];
     productosOrdenados = productos.sort((a, b) => b.precio - a.precio);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
@@ -169,13 +164,9 @@ function listarTarjeta(productos, contenedor, carrito) {
 
 }
 
-
-
-
-// Carrito EN PROGRESO
+// Carrito 
 function agregarProductoAlCarrito(e, carrito, productos) {
     let idProductoAgregado = Number(e.target.id.substring(19));
-
     let productoExisteEnCarrito = carrito.findIndex(producto => producto.id === idProductoAgregado);
     let productoBuscado = productos.find(producto => producto.id === idProductoAgregado);
     if (productoExisteEnCarrito !== -1) {
@@ -195,10 +186,7 @@ function agregarProductoAlCarrito(e, carrito, productos) {
 
 }
 
-
-
-
-// listar carrito En PROGRESO
+// listar carrito
 function listarCarrito(carrito, contenedor) {
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.innerHTML =""
@@ -216,9 +204,6 @@ function listarCarrito(carrito, contenedor) {
         contenedor.appendChild(tarjetaProducto);
     });
 }
-
-
-
 
 // funcion principal
 function principal() {
@@ -262,10 +247,6 @@ function principal() {
     }
 
 }
-
-
-
-
 
 principal();
 
