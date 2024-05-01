@@ -40,8 +40,8 @@ h1 {
     background-color: #f9f9f9;
     border-radius: 8px;
     font-size: 120px;
-    margin-top: 20px;
     margin-bottom: 0px;
+    margin-top: 0px;
     text-decoration-line: underline;
 
 }
@@ -285,6 +285,36 @@ h1 {
 
 .custom-button:hover {
     background-color: #0056b3;
+}
+
+.icono-carrito {
+    font-size: 36px; /* Ajusta el tamaño del icono según tus preferencias */
+}
+
+
+#btnCarrito {
+    padding: 10px 25px;
+    background-color:#ccc;
+    border: none;
+    color: #fff;
+    border-radius: 8px 8px;
+    cursor: pointer;
+    border: #333;
+
+
+}
+
+#btnCarrito:hover {
+    background-color: #007bff;
+}
+
+.btn-carrito-container {
+    display: flex;
+    justify-content: right;/* Alinea los elementos al centro y a la derecha */
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-right: 1%;
+
+
 }
 
 
