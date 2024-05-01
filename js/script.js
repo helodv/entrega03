@@ -16,7 +16,7 @@ class Producto {
 let productos = [
     // id, nombre, marca, modelo, categoria, stock, precio
     new Producto(1, "MSI B450 Gaming Max", "MSI", 'B450 Gaming Max', "motherboard", 0, 45199, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(2, "ASUS ROG Strix B550-F Gaming", "ASUS", "ROG Strix B550-F", "motherboard", 8, 18999, "../assets/images/productos/motherboard_generic.jpg"),
+    new Producto(2, "ASUS ROG Strix B550-F Gaming", "ASUS", "ROG Strix B550-F", "motherboard", 8, 18999, "../assets/images/productos/mb_asus_rog_strix_gaming.webp"),
     new Producto(3, "GIGABYTE B450 AORUS PRO", "GIGABYTE", "B450 AORUS PRO", "motherboard", 12, 8999, "../assets/images/productos/motherboard_generic.jpg"),
     new Producto(4, "MSI MPG Z590 GAMING EDGE WIFI", "MSI", "MPG Z590 GAMING EDGE WIFI", "motherboard", 6, 21999, "../assets/images/productos/motherboard_generic.jpg"),
     new Producto(5, "ASRock B560M-ITX/ac", "ASRock", "B560M-ITX/ac", "motherboard", 3, 12999, "../assets/images/productos/motherboard_generic.jpg"),
