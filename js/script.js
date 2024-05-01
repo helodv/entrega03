@@ -158,11 +158,11 @@ function listarTarjeta(productos, contenedor, carrito) {
                 <div class="linea-separadora"></div>
                 <div class="container-botones">
                     <button class="btn-producto btn-ver-producto">Ver</button>
-                    <button class="btn-producto btn-agregar-al-carrito" id=${producto.id}>Agregar al carrito</button>
+                    <button class="btn-producto btn-agregar-al-carrito" id=btnAgregarAlCarrito${producto.id}>Agregar al carrito</button>
                 </div>
                 `;
             contenedor.appendChild(tarjetaProducto);
-            let btnAgregarAlCarrito = document.getElementById(producto.id);
+            let btnAgregarAlCarrito = document.getElementById("btnAgregarAlCarrito" + producto.id);
             btnAgregarAlCarrito.addEventListener("click", (e) => agregarProductoAlCarrito(e, carrito, productos));
         }
     })
@@ -174,7 +174,7 @@ function listarTarjeta(productos, contenedor, carrito) {
 
 // Carrito EN PROGRESO
 function agregarProductoAlCarrito(e, carrito, productos) {
-    let idProductoAgregado = Number(e.target.id);
+    let idProductoAgregado = Number(e.target.id.substring(19));
 
     let productoExisteEnCarrito = carrito.findIndex(producto => producto.id === idProductoAgregado);
     let productoBuscado = productos.find(producto => producto.id === idProductoAgregado);
@@ -209,7 +209,9 @@ function listarCarrito(carrito, contenedor) {
         tarjetaProducto.innerHTML =
             `
             <h3 class="tarjeta-carrito-nombre">${producto.nombre}</h3>
+            <p class="tarjeta-carrito-cantidad">$${producto.cantidad}</p>
             <p class="tarjeta-carrito-precio">$${producto.precio}</p>
+            <button id=eliminar${producto.id}>eliminar</button>
             `;
         contenedor.appendChild(tarjetaProducto);
     });
@@ -220,9 +222,15 @@ function listarCarrito(carrito, contenedor) {
 
 // funcion principal
 function principal() {
-    window.location.href = '?#';
-    let carrito = []
+    window.location.href = '?#'; //si no agrego esto la busqueda no funciona hasta que haga click en un link con href="#";
+
+    let carrito = [];
+
     listarTodos(productos, carrito);
+
+    //boton carrito
+    let btnCarrito = document.getElementById("btnCarrito")
+    btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas)
     //boton todos los productos
     let btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
     btnMenuPrincipalProductos.onclick = () => listarTodos(productos, carrito);
@@ -252,9 +260,7 @@ function principal() {
         let textoBusqueda = inputBusqueda.value.toLowerCase()
         buscarProductos(productos, textoBusqueda, carrito);
     }
-    //boton carrito
-    let btnCarrito = document.getElementById("btnCarrito")
-    btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas)
+
 }
 
 

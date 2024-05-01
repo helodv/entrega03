@@ -15,10 +15,12 @@
 
     <!-- HEADER ----------------------------------------------------------------------------------------------->
     <header>
+        <!-- boton carrito -->
+        <div class="btn-carrito-container"> <button class="btn btn-outline-success" href="#" id="btnCarrito"><span
+                    class="icono-carrito">🛒</span></div>
         <!-- titulo -->
-        <div class="btn-carrito-container"> <button class="btn btn-outline-success" href="#" id="btnCarrito"><span class="icono-carrito">🛒</span></div>
         <h1 class="share-tech-regular">CODERHARD</h1>
-        <!-- MENU -->
+        <!-- MENU principal-->
         <nav>
             <ul class="menu share-tech-regular">
                 <li><a href="#" id="btnMenuPrincipalProductos">Productos</a></li>
@@ -27,9 +29,8 @@
                 <li><a href="#">Preguntas frecuentes</a></li>
             </ul>
         </nav>
-        <!-- 
-        <div class="linea-separadora-main"></div> -->
 
+        <!-- Barra de busqueda -->
         <div class=" barra-busqueda">
             <form role="search">
                 <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" id="inputBuscar">
@@ -39,9 +40,9 @@
         </div>
     </header>
 
-
     <!-- MAIN BODY -------------------------------------------------------------------------------------------->
     <main>
+        <!-- Menu de categorias -->
         <div class="barra-busqueda">
             <nav>
                 <ul class="menu share-tech-regular">
@@ -51,7 +52,7 @@
                 </ul>
             </nav>
         </div>
-
+        <!-- selector ordenar por: -->
         <form class="opcion-sort" action="#">
             <select class="selectorSort" name="orden">
                 <option value="" disabled selected>Listar por:</option>
@@ -62,10 +63,9 @@
             </select>
         </form>
 
+        <!-- contenedor dinamico  -->
         <div id="containerTarjetas"></div>
     </main>
-
-
 
     <!-- FOOTER ---------------------------------------------------------------------------------------------->
     <footer>
