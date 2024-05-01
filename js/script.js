@@ -142,7 +142,6 @@ function listarTarjeta(productos, contenedor, carrito) {
             btnAgregarAlCarrito.addEventListener("click", (e) => agregarProductoAlCarrito(e, carrito, productos));
         }
     })
-
 }
 
 // Carrito 
@@ -164,7 +163,6 @@ function agregarProductoAlCarrito(e, carrito, productos) {
     }
     console.log("carrito")
     return carrito;
-
 }
 
 // listar carrito
@@ -188,9 +186,7 @@ function listarCarrito(carrito, contenedor) {
 // funcion principal
 function principal() {
     window.location.href = '?#'; //si no agrego esto la busqueda no funciona hasta que haga click en un link con href="#";
-
     let carrito = [];
-
     listarTodos(productos, carrito);
     //boton carrito
     let btnCarrito = document.getElementById("btnCarrito")
