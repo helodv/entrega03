@@ -223,6 +223,3 @@ function principal() {
 }
 
 principal();
-
-
-
