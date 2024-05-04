@@ -52,7 +52,6 @@ function vaciarDiv() {
 // lista Todos los productos
 function listarTodos(productos, carrito) {
     vaciarDiv();
-
     productosListados = [];
     let productosOrdenados = productos.map(producto => producto);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
