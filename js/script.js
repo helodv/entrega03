@@ -161,7 +161,6 @@ function agregarProductoAlCarrito(e, carrito, productos) {
             cantidad: 1
         })
     }
-    console.log("carrito")
     return carrito;
 }
 
@@ -185,7 +184,7 @@ function listarCarrito(carrito, contenedor) {
 
 // funcion principal
 function principal() {
-    window.location.href = '?#'; //si no agrego esto la busqueda no funciona hasta que haga click en un link con href="#";
+     //si no agrego esto la busqueda no funciona hasta que haga click en un link con href="#";
     let carrito = [];
     listarTodos(productos, carrito);
     //boton carrito
@@ -209,17 +208,12 @@ function principal() {
     //input busqueda
     let inputBusqueda = document.getElementById("inputBuscar");
     inputBusqueda.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            let textoBusqueda = inputBusqueda.value.toLowerCase()
-            buscarProductos(productos, textoBusqueda, carrito);
-        }
-    });
-    //boton Buscar
-    let btnBuscar = document.getElementById("btnBuscar");
-    btnBuscar.onclick = () => {
-        let textoBusqueda = inputBusqueda.value.toLowerCase()
-        buscarProductos(productos, textoBusqueda, carrito);
-    }
-}
 
+        event.key === "Enter" && event.preventDefault()
+
+        let textoBusqueda = inputBusqueda.value.toLowerCase()
+
+        buscarProductos(productos, textoBusqueda, carrito);
+    })
+}
 principal();
