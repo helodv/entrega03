@@ -14,7 +14,7 @@ class Producto {
 
 // array de productos
 let productos = [
-    // id, nombre, marca, modelo, categoria, stock, precio
+    // id, nombre, marca, modelo, categoria, stock, precio, imagen
     new Producto(1, "MSI B450 Gaming Max", "MSI", 'B450 Gaming Max', "motherboard", 0, 45199, "../assets/images/productos/motherboard_generic.jpg"),
     new Producto(2, "ASUS ROG Strix B550-F Gaming", "ASUS", "ROG Strix B550-F", "motherboard", 8, 18999, "../assets/images/productos/mb_asus_rog_strix_gaming.webp"),
     new Producto(3, "GIGABYTE B450 AORUS PRO", "GIGABYTE", "B450 AORUS PRO", "motherboard", 12, 8999, "../assets/images/productos/mb_gigabyte_b450_aorus_pro.png"),
@@ -42,7 +42,7 @@ let productos = [
 
 //------------------------------------------------------------------
 
-// vacia el div
+// vacia el div de tarjetas
 function vaciarDiv() {
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.innerHTML = "";
@@ -58,7 +58,7 @@ function listarTodos(productos, carrito) {
     productosListados.push(...productosOrdenados);
 }
 
-// Filtra por categorías
+// lista por categorías
 function filtrarPorCategoria(productos, categoria, carrito) {
     vaciarDiv();
     productosListados = [];
@@ -169,16 +169,19 @@ function listarCarrito(carrito, contenedor) {
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.innerHTML = ""
     carrito.forEach(producto => {
-        let tarjetaProducto = document.createElement("div");
-        tarjetaProducto.className = "tarjeta-producto-carrito";
-        tarjetaProducto.innerHTML =
-            `
-            <h3 class="tarjeta-carrito-nombre">${producto.nombre}</h3>
-            <p class="tarjeta-carrito-cantidad">$${producto.cantidad}</p>
-            <p class="tarjeta-carrito-precio">$${producto.precio}</p>
-            <button id=eliminar${producto.id}>eliminar</button>
-            `;
-        contenedor.appendChild(tarjetaProducto);
+        if (producto.stock > 0) {
+            let tarjetaProducto = document.createElement("div");
+            tarjetaProducto.className = "tarjeta-producto-carrito";
+            tarjetaProducto.innerHTML =
+                `
+                <h3 class="tarjeta-carrito-nombre">${producto.nombre}</h3>
+                <p class="tarjeta-carrito-cantidad">$${producto.cantidad}</p>
+                <p class="tarjeta-carrito-precio">$${producto.precio}</p>
+                <button id=eliminar${producto.id}>eliminar</button>
+                `;
+            contenedor.appendChild(tarjetaProducto);
+        }
+
     });
 }
 
