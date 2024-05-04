@@ -52,7 +52,7 @@
             </nav>
         </div>
         <!-- selector ordenar por: -->
-        <form class="opcion-sort" action="#">
+        <form class="opcion-sort" id="opcionSort" action="#">
             <select class="selectorSort" name="orden">
                 <option value="" disabled selected>Listar por:</option>
                 <option value="precioMayorAMenor">Precio: Mayor a Menor</option>
@@ -62,7 +62,8 @@
             </select>
         </form>
         <!-- contenedor dinamico  -->
-        <div id="containerTarjetas"></div>
+        <div id="containerTarjetas">
+        </div>
     </main>
 
     <!-- FOOTER ---------------------------------------------------------------------------->

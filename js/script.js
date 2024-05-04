@@ -119,6 +119,9 @@ const opcionSort = (opcion, carrito) => {
 
 //generador de tarjeta
 function listarTarjeta(productos, contenedor, carrito) {
+    let contenedorSort = document.getElementById("opcionSort");
+    contenedorTarjetas.className = "";
+    contenedorSort.style.display = "flex";
     productos.forEach(producto => {
         if (producto.stock > 0) {
             let tarjetaProducto = document.createElement("div");
@@ -161,33 +164,62 @@ function agregarProductoAlCarrito(e, carrito, productos) {
             cantidad: 1
         })
     }
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     return carrito;
 }
 
 // listar carrito
 function listarCarrito(carrito, contenedor) {
+    let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"));
+    if (carritoLocalStorage) {
+        carrito = carritoLocalStorage;
+    }
     contenedorTarjetas = document.getElementById("containerTarjetas");
-    contenedorTarjetas.innerHTML = ""
+    contenedorTarjetas.className = "tarjeta-carrito";
+    contenedorTarjetas.innerHTML = `
+    <h2 class="share-tech-regular">CARRITO</h2>
+    `;
+    precioTotal = 0;
+    let contenedorSort = document.getElementById("opcionSort");
+    contenedorSort.style.display = "none";
     carrito.forEach(producto => {
-        if (producto.stock > 0) {
-            let tarjetaProducto = document.createElement("div");
-            tarjetaProducto.className = "tarjeta-producto-carrito";
-            tarjetaProducto.innerHTML =
-                `
-                <h3 class="tarjeta-carrito-nombre">${producto.nombre}</h3>
-                <p class="tarjeta-carrito-cantidad">$${producto.cantidad}</p>
-                <p class="tarjeta-carrito-precio">$${producto.precio}</p>
-                <button id=eliminar${producto.id}>eliminar</button>
-                `;
-            contenedor.appendChild(tarjetaProducto);
-        }
-
+        let tarjetaProducto = document.createElement("div");
+        tarjetaProducto.className = "tarjeta-producto-carrito";
+        subtotal = producto.precio * producto.cantidad;
+        tarjetaProducto.innerHTML =
+            `
+            <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-carrito-imagen">
+            <h3 class="tarjeta-carrito-nombre">${producto.nombre}</h3>
+            <p class="tarjeta-carrito-cantidad">unidades: ${producto.cantidad}</p>
+            <p class="tarjeta-carrito-precio">precio por unidad: $${producto.precio}</p>
+            <p class="tarjeta-carrito-precio">subtotal: $${subtotal}</p>
+            <button class="tarjeta-carrito-btn" id="eliminar${producto.id}">eliminar</button>
+            `;
+        contenedor.appendChild(tarjetaProducto);
+        let botonEliminar = document.getElementById(`eliminar${producto.id}`);
+        botonEliminar.onclick = () => {
+            const indiceAEliminar = carrito.findIndex(item => item.id === producto.id);
+            if (indiceAEliminar !== -1) {
+                carrito.splice(indiceAEliminar, 1);
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                listarCarrito(carrito, contenedorTarjetas)
+            }
+        };
+        precioTotal += subtotal;
     });
+    let tarjetaPrecioTotal = document.createElement("div");
+    tarjetaPrecioTotal.className = "tarjeta-producto-carrito";
+    tarjetaPrecioTotal.innerHTML =
+        `
+    <div class="carrito-comprar>
+    <p">TOTAL: ${precioTotal} </p>
+    <button class="tarjeta-carrito-btn">comprar</button>
+    </div>
+    `
+    contenedor.appendChild(tarjetaPrecioTotal);
 }
-
 // funcion principal
 function principal() {
-     //si no agrego esto la busqueda no funciona hasta que haga click en un link con href="#";
     let carrito = [];
     listarTodos(productos, carrito);
     //boton carrito
@@ -211,12 +243,10 @@ function principal() {
     //input busqueda
     let inputBusqueda = document.getElementById("inputBuscar");
     inputBusqueda.addEventListener("keydown", function (event) {
-
-        event.key === "Enter" && event.preventDefault()
-
-        let textoBusqueda = inputBusqueda.value.toLowerCase()
-
+        event.key === "Enter" && event.preventDefault();
+        let textoBusqueda = inputBusqueda.value.toLowerCase();
         buscarProductos(productos, textoBusqueda, carrito);
     })
 }
+
 principal();
