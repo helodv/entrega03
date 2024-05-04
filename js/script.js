@@ -52,6 +52,7 @@ function vaciarDiv() {
 // lista Todos los productos
 function listarTodos(productos, carrito) {
     vaciarDiv();
+
     productosListados = [];
     let productosOrdenados = productos.map(producto => producto);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
@@ -170,10 +171,6 @@ function agregarProductoAlCarrito(e, carrito, productos) {
 
 // listar carrito
 function listarCarrito(carrito, contenedor) {
-    let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"));
-    if (carritoLocalStorage) {
-        carrito = carritoLocalStorage;
-    }
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.className = "tarjeta-carrito";
     contenedorTarjetas.innerHTML = `
@@ -221,6 +218,10 @@ function listarCarrito(carrito, contenedor) {
 // funcion principal
 function principal() {
     let carrito = [];
+    let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"));
+    if (carritoLocalStorage) {
+        carrito = carritoLocalStorage;
+    }
     listarTodos(productos, carrito);
     //boton carrito
     let btnCarrito = document.getElementById("btnCarrito")
