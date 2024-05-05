@@ -172,10 +172,11 @@ function agregarProductoAlCarrito(e, carrito, productos) {
 function listarCarrito(carrito, contenedor) {
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.className = "tarjeta-carrito";
-    contenedorTarjetas.innerHTML = `
+    contenedorTarjetas.innerHTML = 
+    `
     <h2 class="share-tech-regular">CARRITO</h2>
     `;
-    precioTotal = 0;
+    let precioTotal = 0;
     let contenedorSort = document.getElementById("opcionSort");
     contenedorSort.style.display = "none";
     carrito.forEach(producto => {
@@ -198,7 +199,7 @@ function listarCarrito(carrito, contenedor) {
             if (productoAEliminar !== -1) {
                 carrito.splice(productoAEliminar, 1);
                 localStorage.setItem("carrito", JSON.stringify(carrito));
-                listarCarrito(carrito, contenedorTarjetas)
+                listarCarrito(carrito, contenedorTarjetas);
             }
         };
         precioTotal += subtotal;
@@ -223,8 +224,8 @@ function principal() {
     }
     listarTodos(productos, carrito);
     //boton carrito
-    let btnCarrito = document.getElementById("btnCarrito")
-    btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas)
+    let btnCarrito = document.getElementById("btnCarrito");
+    btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas);
     //boton todos los productos
     let btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
     btnMenuPrincipalProductos.onclick = () => listarTodos(productos, carrito);
