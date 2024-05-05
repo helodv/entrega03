@@ -53,7 +53,7 @@ function vaciarDiv() {
 function listarTodos(productos, carrito) {
     vaciarDiv();
     productosListados = [];
-    let productosOrdenados = productos.map(producto => producto);
+    const productosOrdenados = productos.map(producto => producto);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
 }
@@ -62,7 +62,7 @@ function listarTodos(productos, carrito) {
 function filtrarPorCategoria(productos, categoria, carrito) {
     vaciarDiv();
     productosListados = [];
-    let productosOrdenados = productos.filter(producto => producto.categoria === categoria);
+    const productosOrdenados = productos.filter(producto => producto.categoria === categoria);
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
     productosListados.push(...productosOrdenados);
 }
@@ -71,11 +71,11 @@ function filtrarPorCategoria(productos, categoria, carrito) {
 function buscarProductos(productos, textoBusqueda, carrito) {
     vaciarDiv();
     productosListados = [];
-    let productosOrdenados = productos.filter(producto => {
-        let nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
-        let categoriaCoincide = producto.categoria.toLowerCase().includes(textoBusqueda);
-        let marcaCoincide = producto.marca.toLowerCase().includes(textoBusqueda);
-        let modeloCoincide = producto.modelo.toLowerCase().includes(textoBusqueda);
+    const productosOrdenados = productos.filter(producto => {
+        const nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
+        const categoriaCoincide = producto.categoria.toLowerCase().includes(textoBusqueda);
+        const marcaCoincide = producto.marca.toLowerCase().includes(textoBusqueda);
+        const modeloCoincide = producto.modelo.toLowerCase().includes(textoBusqueda);
         return nombreCoincide || categoriaCoincide || marcaCoincide || modeloCoincide;
     });
     listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
@@ -85,7 +85,7 @@ function buscarProductos(productos, textoBusqueda, carrito) {
 // selector Sort acomodar por:
 const opcionSort = (opcion, carrito) => {
     opcion.addEventListener("change", () => {
-        let opcionSeleccionada = opcion.value;
+        const opcionSeleccionada = opcion.value;
         switch (opcionSeleccionada) {
             case "precioMayorAMenor":
                 vaciarDiv();
@@ -109,7 +109,7 @@ const opcionSort = (opcion, carrito) => {
                 vaciarDiv();
                 productosListados.sort((a, b) => b.nombre.localeCompare(a.nombre));
                 listarTarjeta(productosListados, contenedorTarjetas, carrito);
-                productosListados.push(...productosOrdenados);
+                productosListados.push;
                 break;
             default:
                 break;
@@ -119,12 +119,12 @@ const opcionSort = (opcion, carrito) => {
 
 //generador de tarjeta
 function listarTarjeta(productos, contenedor, carrito) {
-    let contenedorSort = document.getElementById("opcionSort");
+    const contenedorSort = document.getElementById("opcionSort");
     contenedorTarjetas.className = "";
     contenedorSort.style.display = "flex";
     productos.forEach(producto => {
         if (producto.stock > 0) {
-            let tarjetaProducto = document.createElement("div");
+            const tarjetaProducto = document.createElement("div");
             tarjetaProducto.className = "tarjeta-producto";
             tarjetaProducto.innerHTML =
                 `
@@ -141,7 +141,7 @@ function listarTarjeta(productos, contenedor, carrito) {
                 </div>
                 `;
             contenedor.appendChild(tarjetaProducto);
-            let btnAgregarAlCarrito = document.getElementById("btnAgregarAlCarrito" + producto.id);
+            const btnAgregarAlCarrito = document.getElementById("btnAgregarAlCarrito" + producto.id);
             btnAgregarAlCarrito.addEventListener("click", (e) => agregarProductoAlCarrito(e, carrito, productos));
         }
     })
@@ -149,9 +149,9 @@ function listarTarjeta(productos, contenedor, carrito) {
 
 // Carrito 
 function agregarProductoAlCarrito(e, carrito, productos) {
-    let idProductoAgregado = Number(e.target.id.substring(19));
-    let productoExisteEnCarrito = carrito.findIndex(producto => producto.id === idProductoAgregado);
-    let productoBuscado = productos.find(producto => producto.id === idProductoAgregado);
+    const idProductoAgregado = Number(e.target.id.substring(19));
+    const productoExisteEnCarrito = carrito.findIndex(producto => producto.id === idProductoAgregado);
+    const productoBuscado = productos.find(producto => producto.id === idProductoAgregado);
     if (productoExisteEnCarrito !== -1) {
         carrito[productoExisteEnCarrito].cantidad++
         carrito[productoExisteEnCarrito].subtotal = carrito[productoExisteEnCarrito].precio * carrito[productoExisteEnCarrito].cantidad
@@ -177,12 +177,12 @@ function listarCarrito(carrito, contenedor) {
     <h2 class="share-tech-regular">CARRITO</h2>
     `;
     let precioTotal = 0;
-    let contenedorSort = document.getElementById("opcionSort");
+    const contenedorSort = document.getElementById("opcionSort");
     contenedorSort.style.display = "none";
     carrito.forEach(producto => {
-        let tarjetaProducto = document.createElement("div");
+        const tarjetaProducto = document.createElement("div");
         tarjetaProducto.className = "tarjeta-producto-carrito";
-        let subtotal = producto.precio * producto.cantidad;
+        const subtotal = producto.precio * producto.cantidad;
         tarjetaProducto.innerHTML =
             `
             <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-carrito-imagen">
@@ -193,9 +193,9 @@ function listarCarrito(carrito, contenedor) {
             <button class="tarjeta-carrito-btn" id="eliminar${producto.id}">eliminar</button>
             `;
         contenedor.appendChild(tarjetaProducto);
-        let botonEliminar = document.getElementById(`eliminar${producto.id}`);
+        const botonEliminar = document.getElementById(`eliminar${producto.id}`);
         botonEliminar.onclick = () => {
-            let productoAEliminar = carrito.findIndex(prod => prod.id === producto.id);
+            const productoAEliminar = carrito.findIndex(prod => prod.id === producto.id);
             if (productoAEliminar !== -1) {
                 carrito.splice(productoAEliminar, 1);
                 localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -204,7 +204,7 @@ function listarCarrito(carrito, contenedor) {
         };
         precioTotal += subtotal;
     });
-    let tarjetaPrecioTotal = document.createElement("div");
+    const tarjetaPrecioTotal = document.createElement("div");
     tarjetaPrecioTotal.className = "tarjeta-producto-carrito";
     tarjetaPrecioTotal.innerHTML =
     `
@@ -224,28 +224,28 @@ function principal() {
     }
     listarTodos(productos, carrito);
     //boton carrito
-    let btnCarrito = document.getElementById("btnCarrito");
+    const btnCarrito = document.getElementById("btnCarrito");
     btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas);
     //boton todos los productos
-    let btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
+    const btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
     btnMenuPrincipalProductos.onclick = () => listarTodos(productos, carrito);
     //boton motherboards
-    let btnCategoriasMotherboards = document.getElementById("btnCategoriasMotherboard");
+    const btnCategoriasMotherboards = document.getElementById("btnCategoriasMotherboard");
     btnCategoriasMotherboards.onclick = () => filtrarPorCategoria(productos, "motherboard", carrito);
     //boton procesadores
-    let btnCategoriasProcesador = document.getElementById("btnCategoriasProcesador");
+    const btnCategoriasProcesador = document.getElementById("btnCategoriasProcesador");
     btnCategoriasProcesador.onclick = () => filtrarPorCategoria(productos, "procesador", carrito);
     //boton memorias
-    let btnCategoriasMemoria = document.getElementById("btnCategoriasMemoria");
+    const btnCategoriasMemoria = document.getElementById("btnCategoriasMemoria");
     btnCategoriasMemoria.onclick = () => filtrarPorCategoria(productos, "memoria RAM", carrito);
     // selector opciones sort
-    let opcion = document.getElementsByClassName("selectorSort")[0];
+    const opcion = document.getElementsByClassName("selectorSort")[0];
     opcion.onclick = () => opcionSort(opcion, carrito);
     //input busqueda
-    let inputBusqueda = document.getElementById("inputBuscar");
+    const inputBusqueda = document.getElementById("inputBuscar");
     inputBusqueda.addEventListener("keydown", function (event) {
         event.key === "Enter" && event.preventDefault();
-        let textoBusqueda = inputBusqueda.value.toLowerCase();
+        const textoBusqueda = inputBusqueda.value.toLowerCase();
         buscarProductos(productos, textoBusqueda, carrito);
     })
 }
