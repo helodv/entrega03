@@ -181,7 +181,7 @@ function listarCarrito(carrito, contenedor) {
     carrito.forEach(producto => {
         let tarjetaProducto = document.createElement("div");
         tarjetaProducto.className = "tarjeta-producto-carrito";
-        subtotal = producto.precio * producto.cantidad;
+        let subtotal = producto.precio * producto.cantidad;
         tarjetaProducto.innerHTML =
             `
             <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-carrito-imagen">
@@ -194,9 +194,9 @@ function listarCarrito(carrito, contenedor) {
         contenedor.appendChild(tarjetaProducto);
         let botonEliminar = document.getElementById(`eliminar${producto.id}`);
         botonEliminar.onclick = () => {
-            const indiceAEliminar = carrito.findIndex(item => item.id === producto.id);
-            if (indiceAEliminar !== -1) {
-                carrito.splice(indiceAEliminar, 1);
+            let productoAEliminar = carrito.findIndex(prod => prod.id === producto.id);
+            if (productoAEliminar !== -1) {
+                carrito.splice(productoAEliminar, 1);
                 localStorage.setItem("carrito", JSON.stringify(carrito));
                 listarCarrito(carrito, contenedorTarjetas)
             }
@@ -206,12 +206,12 @@ function listarCarrito(carrito, contenedor) {
     let tarjetaPrecioTotal = document.createElement("div");
     tarjetaPrecioTotal.className = "tarjeta-producto-carrito";
     tarjetaPrecioTotal.innerHTML =
-        `
+    `
     <div class="carrito-comprar>
     <p">TOTAL: ${precioTotal} </p>
     <button class="tarjeta-carrito-btn">comprar</button>
     </div>
-    `
+    `;
     contenedor.appendChild(tarjetaPrecioTotal);
 }
 // funcion principal
