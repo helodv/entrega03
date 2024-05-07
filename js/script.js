@@ -1,3 +1,4 @@
+
 // clase constructora de productos
 class Producto {
     constructor(id, nombre, marca, modelo, categoria, stock, precio, imagen) {
@@ -172,8 +173,8 @@ function agregarProductoAlCarrito(e, carrito, productos) {
 function listarCarrito(carrito, contenedor) {
     contenedorTarjetas = document.getElementById("containerTarjetas");
     contenedorTarjetas.className = "tarjeta-carrito";
-    contenedorTarjetas.innerHTML = 
-    `
+    contenedorTarjetas.innerHTML =
+        `
     <h2 class="share-tech-regular">CARRITO</h2>
     `;
     let precioTotal = 0;
@@ -207,16 +208,33 @@ function listarCarrito(carrito, contenedor) {
     const tarjetaPrecioTotal = document.createElement("div");
     tarjetaPrecioTotal.className = "tarjeta-producto-carrito";
     tarjetaPrecioTotal.innerHTML =
-    `
+        `
     <div class="carrito-comprar>
     <p">TOTAL: ${precioTotal} </p>
-    <button class="tarjeta-carrito-btn">comprar</button>
+    <button class="tarjeta-carrito-btn" id="btnComprarCarrito">comprar</button>
     </div>
     `;
     contenedor.appendChild(tarjetaPrecioTotal);
+    let botonComprarCarrito = document.getElementById("btnComprarCarrito");
+    botonComprarCarrito.onclick = () => {
+        if (carrito.length < 1) {
+            Swal.fire({
+                icon: "error",
+                title: "Carrito vacío",
+                text: "No hay ningún producto en el carrito",
+            });
+        } else {
+            Swal.fire({
+                icon: "success",
+                title: "Compra Exitosa",
+                text: "Le hemos enviado los detalles de la compra a su correo electrónico.",
+            });
+        }
+    }
 }
 // funcion principal
 function principal() {
+
     let carrito = [];
     let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"));
     if (carritoLocalStorage) {
