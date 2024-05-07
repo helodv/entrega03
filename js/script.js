@@ -144,20 +144,12 @@ function listarTarjeta(productos, contenedor, carrito) {
             contenedor.appendChild(tarjetaProducto);
             const btnAgregarAlCarrito = document.getElementById("btnAgregarAlCarrito" + producto.id);
             btnAgregarAlCarrito.addEventListener("click", (e) => {
-                if (producto.stock > 0) {
-                    agregarProductoAlCarrito(e, carrito, productos);
-                    Swal.fire({
-                        icon: "success",
-                        title: "Carrito",
-                        text: "producto agregado al carrito exitosamente",
-                    });
-                } else if (producto.stock <= 0){
-                    Swal.fire({
-                        icon: "error",
-                        title: "SIN STOCK",
-                        text: "No hay stock disponible para agregarlo al carrito",
-                    });
-                }
+                agregarProductoAlCarrito(e, carrito, productos);
+                Swal.fire({
+                    icon: "success",
+                    title: "Carrito",
+                    text: "producto agregado al carrito exitosamente",
+                });
             });
         }
     })
@@ -245,19 +237,19 @@ function listarCarrito(carrito, contenedor) {
                     productoEnStock.stock -= productoCarrito.cantidad;
                 }
             });
+            localStorage.removeItem("carrito");
             carrito = [];
-            vaciarDiv(); 
-            localStorage.setItem("carrito", JSON.stringify(carrito));
+            vaciarDiv();
+
             Swal.fire({
                 icon: "success",
                 title: "Compra Exitosa",
                 text: "Le hemos enviado los detalles de la compra a su correo electrónico.",
             });
-
+            
         }
     }
 }
-
 
 // funcion principal
 function principal() {
@@ -271,6 +263,7 @@ function principal() {
     //boton carrito
     const btnCarrito = document.getElementById("btnCarrito");
     btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas);
+
     //boton todos los productos
     const btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
     btnMenuPrincipalProductos.onclick = () => listarTodos(productos, carrito);
