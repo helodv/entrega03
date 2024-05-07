@@ -17,7 +17,7 @@ class Producto {
 let productos = [
     // id, nombre, marca, modelo, categoria, stock, precio, imagen
     new Producto(1, "MSI B450 Gaming Max", "MSI", 'B450 Gaming Max', "motherboard", 0, 45199, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(2, "ASUS ROG Strix B550-F Gaming", "ASUS", "ROG Strix B550-F", "motherboard", 8, 18999, "../assets/images/productos/mb_asus_rog_strix_gaming.webp"),
+    new Producto(2, "ASUS ROG Strix B550-F Gaming", "ASUS", "ROG Strix B550-F", "motherboard", 1, 18999, "../assets/images/productos/mb_asus_rog_strix_gaming.webp"),
     new Producto(3, "GIGABYTE B450 AORUS PRO", "GIGABYTE", "B450 AORUS PRO", "motherboard", 12, 8999, "../assets/images/productos/mb_gigabyte_b450_aorus_pro.png"),
     new Producto(4, "MSI MPG Z590 GAMING EDGE WIFI", "MSI", "MPG Z590 GAMING EDGE WIFI", "motherboard", 6, 21999, "../assets/images/productos/msi_mpg_z590_gaming_edge_wifi.png"),
     new Producto(5, "ASRock B560M-ITX/ac", "ASRock", "B560M-ITX/ac", "motherboard", 3, 12999, "../assets/images/productos/mb_asrock_b560m_itx.png"),
@@ -143,7 +143,22 @@ function listarTarjeta(productos, contenedor, carrito) {
                 `;
             contenedor.appendChild(tarjetaProducto);
             const btnAgregarAlCarrito = document.getElementById("btnAgregarAlCarrito" + producto.id);
-            btnAgregarAlCarrito.addEventListener("click", (e) => agregarProductoAlCarrito(e, carrito, productos));
+            btnAgregarAlCarrito.addEventListener("click", (e) => {
+                if (producto.stock > 0) {
+                    agregarProductoAlCarrito(e, carrito, productos);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Carrito",
+                        text: "producto agregado al carrito exitosamente",
+                    });
+                } else if (producto.stock <= 0){
+                    Swal.fire({
+                        icon: "error",
+                        title: "SIN STOCK",
+                        text: "No hay stock disponible para agregarlo al carrito",
+                    });
+                }
+            });
         }
     })
 }
@@ -224,14 +239,26 @@ function listarCarrito(carrito, contenedor) {
                 text: "No hay ningún producto en el carrito",
             });
         } else {
+            carrito.forEach(productoCarrito => {
+                const productoEnStock = productos.find(producto => producto.id === productoCarrito.id);
+                if (productoEnStock) {
+                    productoEnStock.stock -= productoCarrito.cantidad;
+                }
+            });
+            carrito = [];
+            vaciarDiv(); 
+            localStorage.setItem("carrito", JSON.stringify(carrito));
             Swal.fire({
                 icon: "success",
                 title: "Compra Exitosa",
                 text: "Le hemos enviado los detalles de la compra a su correo electrónico.",
             });
+
         }
     }
 }
+
+
 // funcion principal
 function principal() {
 
