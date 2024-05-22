@@ -207,23 +207,17 @@ function cargarCarrito() {
     return carrito = JSON.parse(localStorage.getItem("carrito")) || []
 }
 
-
-
 // funcion principal
 async function principal() {
-
     fetch("../JSON/productos.json")
     .then(response =>  response.json())
     .then(productos => {
         return productos
     })
-
     const response = await fetch("../JSON/productos.json")
-    const productos = await response.json()
-     
+    const productos = await response.json()   
     let carrito = []
     let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"))
-
     if (carritoLocalStorage) {
         carrito = carritoLocalStorage
     }
