@@ -209,12 +209,12 @@ function cargarCarrito() {
 
 // funcion principal
 async function principal() {
-    fetch("../JSON/productos.json")
+    fetch("../json/productos.json")
     .then(response =>  response.json())
     .then(productos => {
         return productos
     })
-    const response = await fetch("../JSON/productos.json")
+    const response = await fetch("../json/productos.json")
     const productos = await response.json()   
     let carrito = []
     let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"))
