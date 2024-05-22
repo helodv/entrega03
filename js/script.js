@@ -135,7 +135,6 @@ function agregarProductoAlCarrito(e, carrito, productos) {
 
 // listar carrito
 function listarCarrito(carrito, contenedor) {
-
     carrito = cargarCarrito()
     contenedorTarjetas = document.getElementById("containerTarjetas")
     contenedorTarjetas.className = "tarjeta-carrito"
@@ -219,12 +218,12 @@ async function principal() {
         return productos
     })
 
-
     const response = await fetch("../JSON/productos.json")
     const productos = await response.json()
      
     let carrito = []
     let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"))
+
     if (carritoLocalStorage) {
         carrito = carritoLocalStorage
     }
