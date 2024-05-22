@@ -97,6 +97,14 @@ main {
     text-overflow: ellipsis;
     max-width: 100%;
 }
+.tarjeta-producto-detalles {
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
 
 
 .tarjeta-producto-precio {
@@ -257,7 +265,7 @@ main {
 /* boton carrito -------------------------------------------*/
 #btnCarrito {
     padding: 10px 20px;
-    background-color: #ccc;
+    background-color: #f9f9f9;
     border: none;
     color: #fff;
     border-radius: 8px 8px;
