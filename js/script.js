@@ -1,132 +1,118 @@
-
-// clase constructora de productos
-class Producto {
-    constructor(id, nombre, marca, modelo, categoria, stock, precio, imagen) {
-        this.id = id,
-            this.nombre = nombre,
-            this.marca = marca,
-            this.modelo = modelo,
-            this.categoria = categoria,
-            this.stock = stock,
-            this.precio = precio,
-            this.imagen = imagen
-    };
-};
-
 // array de productos
 let productos = [
     // id, nombre, marca, modelo, categoria, stock, precio, imagen
-    new Producto(1, "MSI B450 Gaming Max", "MSI", 'B450 Gaming Max', "motherboard", 0, 45199, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(2, "ASUS ROG Strix B550-F Gaming", "ASUS", "ROG Strix B550-F", "motherboard", 1, 18999, "../assets/images/productos/mb_asus_rog_strix_gaming.webp"),
-    new Producto(3, "GIGABYTE B450 AORUS PRO", "GIGABYTE", "B450 AORUS PRO", "motherboard", 12, 8999, "../assets/images/productos/mb_gigabyte_b450_aorus_pro.png"),
-    new Producto(4, "MSI MPG Z590 GAMING EDGE WIFI", "MSI", "MPG Z590 GAMING EDGE WIFI", "motherboard", 6, 21999, "../assets/images/productos/msi_mpg_z590_gaming_edge_wifi.png"),
-    new Producto(5, "ASRock B560M-ITX/ac", "ASRock", "B560M-ITX/ac", "motherboard", 3, 12999, "../assets/images/productos/mb_asrock_b560m_itx.png"),
-    new Producto(6, "AMD Ryzen 7 5800X", "AMD", "Ryzen 7 5800X", "procesador", 10, 29999, "../assets/images/productos/ryzen7.webp"),
-    new Producto(7, "Intel Core i5-11600K", "Intel", "Core i5-11600K", "procesador", 7, 24999, "../assets/images/productos/i5.jpg"),
-    new Producto(8, "AMD Ryzen 9 5950X", "AMD", "Ryzen 9 5950X", "procesador", 4, 69999, "../assets/images/productos/ryzen9.webp"),
-    new Producto(9, "Intel Core i9-11900KF", "Intel", "Core i9-11900KF", "procesador", 2, 79999, "../assets/images/productos/i9.jpg"),
-    new Producto(10, "AMD Ryzen 5 5600G", "AMD", "Ryzen 5 5600G", "procesador", 15, 17999, "../assets/images/productos/ryzen5.jpg"),
-    new Producto(11, "Corsair Vengeance LPX 16GB DDR4 3200MHz", "Corsair", "Vengeance LPX", "memoria RAM", 20, 6999, "../assets/images/productos/ram_corsair_vengeance_lpx_16gb_dddr4_3200mhz.jpg"),
-    new Producto(12, "Crucial Ballistix 32GB DDR4 3600MHz", "Crucial", "Ballistix", "memoria RAM", 15, 12999, "../assets/images/productos/ram_crucial_ballistix_32gb_ddr4_3600mhz.jpg"),
-    new Producto(13, "G.Skill Ripjaws V 64GB DDR4 3200MHz", "G.Skill", "Ripjaws V", "memoria RAM", 8, 24999, "../assets/images/productos/ram_gskill_ripjaws_v_64gb_ddr4_3200mhz.jpg"),
-    new Producto(14, "HyperX Fury RGB 16GB DDR4 2666MHz", "HyperX", "Fury RGB", "memoria RAM", 25, 7999, "../assets/images/productos/ram_hyperx_fury_rgb_16gb_ddr4_2666mhz.jpg"),
-    new Producto(15, "Team T-Force Delta RGB 32GB DDR4 3000MHz", "Team T-Force", "Delta RGB", "memoria RAM", 10, 10999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(16, "NVIDIA GeForce RTX 4070 Super", "NVIDIA", "GeForce RTX 4070 Super", "graphics card", 5, 45199, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(17, "AMD Radeon RX 7900 GRE", "AMD", "Radeon RX 7900 GRE", "graphics card", 8, 18999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(18, "NVIDIA GeForce RTX 4070", "NVIDIA", "GeForce RTX 4070", "graphics card", 12, 8999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(19, "NVIDIA GeForce RTX 4090", "NVIDIA", "GeForce RTX 4090", "graphics card", 6, 21999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(20, "AMD Radeon RX 7900 XTX", "AMD", "Radeon RX 7900 XTX", "graphics card", 3, 12999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(21, "Seagate Barracuda 4TB", "Seagate", "Barracuda", "almacenamiento", 5, 8999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(22, "Western Digital Blue 2TB", "Western Digital", "Blue", "almacenamiento", 8, 6999, "../assets/images/productos/motherboard_generic.jpg"),
-    new Producto(23, "Toshiba P300 3TB", "Toshiba", "P300", "almacenamiento", 12, 7999, "../assets/images/productos/motherboard_generic.jpg")
-];
+    { id: 1, nombre: "MSI B450 Gaming Max", marca: "MSI", modelo: 'B450 Gaming Max', categoria: "motherboard", stock: 0, precio: 45199, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 3, nombre: "GIGABYTE B450 AORUS PRO", marca: "GIGABYTE", modelo: "B450 AORUS PRO", categoria: "motherboard", stock: 12, precio: 8999, imagen: "../assets/images/productos/mb_gigabyte_b450_aorus_pro.png" },
+    { id: 2, nombre: "ASUS ROG Strix B550-F Gaming", marca: "ASUS", modelo: "ROG Strix B550-F", categoria: "motherboard", stock: 1, precio: 18999, imagen: "../assets/images/productos/mb_asus_rog_strix_gaming.webp" },
+    { id: 4, nombre: "MSI MPG Z590 GAMING EDGE WIFI", marca: "MSI", modelo: "MPG Z590 GAMING EDGE WIFI", categoria: "motherboard", stock: 6, precio: 21999, imagen: "../assets/images/productos/msi_mpg_z590_gaming_edge_wifi.png" },
+    { id: 5, nombre: "ASRock B560M-ITX/ac", marca: "ASRock", modelo: "B560M-ITX/ac", categoria: "motherboard", stock: 3, precio: 12999, imagen: "../assets/images/productos/mb_asrock_b560m_itx.png" },
+    { id: 6, nombre: "AMD Ryzen 7 5800X", marca: "AMD", modelo: "Ryzen 7 5800X", categoria: "procesador", stock: 10, precio: 29999, imagen: "../assets/images/productos/ryzen7.webp" },
+    { id: 7, nombre: "Intel Core i5-11600K", marca: "Intel", modelo: "Core i5-11600K", categoria: "procesador", stock: 7, precio: 24999, imagen: "../assets/images/productos/i5.jpg" },
+    { id: 8, nombre: "AMD Ryzen 9 5950X", marca: "AMD", modelo: "Ryzen 9 5950X", categoria: "procesador", stock: 4, precio: 69999, imagen: "../assets/images/productos/ryzen9.webp" },
+    { id: 9, nombre: "Intel Core i9-11900KF", marca: "Intel", modelo: "Core i9-11900KF", categoria: "procesador", stock: 2, precio: 79999, imagen: "../assets/images/productos/i9.jpg" },
+    { id: 10, nombre: "AMD Ryzen 5 5600G", marca: "AMD", modelo: "Ryzen 5 5600G", categoria: "procesador", stock: 15, precio: 17999, imagen: "../assets/images/productos/ryzen5.jpg" },
+    { id: 11, nombre: "Corsair Vengeance LPX 16GB DDR4 3200MHz", marca: "Corsair", modelo: "Vengeance LPX", categoria: "memoria RAM", stock: 20, precio: 6999, imagen: "../assets/images/productos/ram_corsair_vengeance_lpx_16gb_dddr4_3200mhz.jpg" },
+    { id: 12, nombre: "Crucial Ballistix 32GB DDR4 3600MHz", marca: "Crucial", modelo: "Ballistix", categoria: "memoria RAM", stock: 15, precio: 12999, imagen: "../assets/images/productos/ram_crucial_ballistix_32gb_ddr4_3600mhz.jpg" },
+    { id: 13, nombre: "G.Skill Ripjaws V 64GB DDR4 3200MHz", marca: "G.Skill", modelo: "Ripjaws V", categoria: "memoria RAM", stock: 8, precio: 24999, imagen: "../assets/images/productos/ram_gskill_ripjaws_v_64gb_ddr4_3200mhz.jpg" },
+    { id: 14, nombre: "HyperX Fury RGB 16GB DDR4 2666MHz", marca: "HyperX", modelo: "Fury RGB", categoria: "memoria RAM", stock: 25, precio: 7999, imagen: "../assets/images/productos/ram_hyperx_fury_rgb_16gb_ddr4_2666mhz.jpg" },
+    { id: 15, nombre: "Team T-Force Delta RGB 32GB DDR4 3000MHz", marca: "Team T-Force", modelo: "Delta RGB", categoria: "memoria RAM", stock: 10, precio: 10999, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 16, nombre: "NVIDIA GeForce RTX 4070 Super", marca: "NVIDIA", modelo: "GeForce RTX 4070 Super", categoria: "video", stock: 5, precio: 45199, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 17, nombre: "AMD Radeon RX 7900 GRE", marca: "AMD", modelo: "Radeon RX 7900 GRE", categoria: "video", stock: 8, precio: 18999, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 18, nombre: "NVIDIA GeForce RTX 4070", marca: "NVIDIA", modelo: "GeForce RTX 4070", categoria: "video", stock: 12, precio: 8999, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 19, nombre: "NVIDIA GeForce RTX 4090", marca: "NVIDIA", modelo: "GeForce RTX 4090", categoria: "video", stock: 6, precio: 21999, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 20, nombre: "AMD Radeon RX 7900 XTX", marca: "AMD", modelo: "Radeon RX 7900 XTX", categoria: "video", stock: 3, precio: 12999, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 21, nombre: "Seagate Barracuda 4TB", marca: "Seagate", modelo: "Barracuda", categoria: "almacenamiento", stock: 5, precio: 8999, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 22, nombre: "Western Digital Blue 2TB", marca: "Western Digital", modelo: "Blue", categoria: "almacenamiento", stock: 8, precio: 6999, imagen: "../assets/images/productos/motherboard_generic.jpg" },
+    { id: 23, nombre: "Toshiba P300 3TB", marca: "Toshiba", modelo: "P300", categoria: "almacenamiento", stock: 12, precio: 7999, imagen: "../assets/images/productos/motherboard_generic.jpg" }
+]
+
 
 //------------------------------------------------------------------
 
 // vacia el div de tarjetas
 function vaciarDiv() {
-    contenedorTarjetas = document.getElementById("containerTarjetas");
-    contenedorTarjetas.innerHTML = "";
-    return contenedorTarjetas;
+    contenedorTarjetas = document.getElementById("containerTarjetas")
+    contenedorTarjetas.innerHTML = ""
+    return contenedorTarjetas
 }
 
 // lista Todos los productos
 function listarTodos(productos, carrito) {
-    vaciarDiv();
-    productosListados = [];
-    const productosOrdenados = productos.map(producto => producto);
-    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
-    productosListados.push(...productosOrdenados);
+    vaciarDiv()
+    productosListados = []
+    const productosOrdenados = productos.map(producto => producto)
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito)
+    productosListados.push(...productosOrdenados)
 }
 
 // lista por categorías
 function filtrarPorCategoria(productos, categoria, carrito) {
-    vaciarDiv();
-    productosListados = [];
-    const productosOrdenados = productos.filter(producto => producto.categoria === categoria);
-    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
-    productosListados.push(...productosOrdenados);
+    vaciarDiv()
+    productosListados = []
+    const productosOrdenados = productos.filter(producto => producto.categoria === categoria)
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito)
+    productosListados.push(...productosOrdenados)
 }
 
 // busca productos
 function buscarProductos(productos, textoBusqueda, carrito) {
-    vaciarDiv();
-    productosListados = [];
+    vaciarDiv()
+    productosListados = []
     const productosOrdenados = productos.filter(producto => {
-        const nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda);
-        const categoriaCoincide = producto.categoria.toLowerCase().includes(textoBusqueda);
-        const marcaCoincide = producto.marca.toLowerCase().includes(textoBusqueda);
-        const modeloCoincide = producto.modelo.toLowerCase().includes(textoBusqueda);
-        return nombreCoincide || categoriaCoincide || marcaCoincide || modeloCoincide;
-    });
-    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito);
-    productosListados.push(...productosOrdenados);
+        const nombreCoincide = producto.nombre.toLowerCase().includes(textoBusqueda)
+        const categoriaCoincide = producto.categoria.toLowerCase().includes(textoBusqueda)
+        const marcaCoincide = producto.marca.toLowerCase().includes(textoBusqueda)
+        const modeloCoincide = producto.modelo.toLowerCase().includes(textoBusqueda)
+        return nombreCoincide || categoriaCoincide || marcaCoincide || modeloCoincide
+    })
+    listarTarjeta(productosOrdenados, contenedorTarjetas, carrito)
+    productosListados.push(...productosOrdenados)
 }
 
 // selector Sort acomodar por:
 const opcionSort = (opcion, carrito) => {
     opcion.addEventListener("change", () => {
-        const opcionSeleccionada = opcion.value;
+        const opcionSeleccionada = opcion.value
         switch (opcionSeleccionada) {
             case "precioMayorAMenor":
-                vaciarDiv();
-                productosListados.sort((a, b) => b.precio - a.precio);
-                listarTarjeta(productosListados, contenedorTarjetas, carrito);
-                productosListados.push;
-                break;
+                vaciarDiv()
+                productosListados.sort((a, b) => b.precio - a.precio)
+                listarTarjeta(productosListados, contenedorTarjetas, carrito)
+                productosListados.push
+                break
             case "precioMenorAMayor":
-                vaciarDiv();
-                productosListados.sort((a, b) => a.precio - b.precio);
-                listarTarjeta(productosListados, contenedorTarjetas, carrito);
-                productosListados.push;
-                break;
+                vaciarDiv()
+                productosListados.sort((a, b) => a.precio - b.precio)
+                listarTarjeta(productosListados, contenedorTarjetas, carrito)
+                productosListados.push
+                break
             case "NombreAaZ":
-                vaciarDiv();
-                productosListados.sort((a, b) => a.nombre.localeCompare(b.nombre));
-                listarTarjeta(productosListados, contenedorTarjetas, carrito);
-                productosListados.push;
-                break;
+                vaciarDiv()
+                productosListados.sort((a, b) => a.nombre.localeCompare(b.nombre))
+                listarTarjeta(productosListados, contenedorTarjetas, carrito)
+                productosListados.push
+                break
             case "NombreZaA":
-                vaciarDiv();
-                productosListados.sort((a, b) => b.nombre.localeCompare(a.nombre));
-                listarTarjeta(productosListados, contenedorTarjetas, carrito);
-                productosListados.push;
-                break;
+                vaciarDiv()
+                productosListados.sort((a, b) => b.nombre.localeCompare(a.nombre))
+                listarTarjeta(productosListados, contenedorTarjetas, carrito)
+                productosListados.push
+                break
             default:
-                break;
+                break
         }
-    });
-};
+    })
+}
 
 //generador de tarjeta
 function listarTarjeta(productos, contenedor, carrito) {
-    const contenedorSort = document.getElementById("opcionSort");
-    contenedorTarjetas.className = "";
-    contenedorSort.style.display = "flex";
+    const contenedorSort = document.getElementById("opcionSort")
+    contenedorTarjetas.className = ""
+    contenedorSort.style.display = "flex"
     productos.forEach(producto => {
         if (producto.stock > 0) {
-            const tarjetaProducto = document.createElement("div");
-            tarjetaProducto.className = "tarjeta-producto";
+            const tarjetaProducto = document.createElement("div")
+            tarjetaProducto.className = "tarjeta-producto"
             tarjetaProducto.innerHTML =
                 `
                 <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-producto-imagen">
@@ -140,26 +126,27 @@ function listarTarjeta(productos, contenedor, carrito) {
                     <button class="btn-producto btn-ver-producto">Ver</button>
                     <button class="btn-producto btn-agregar-al-carrito" id=btnAgregarAlCarrito${producto.id}>Agregar al carrito</button>
                 </div>
-                `;
-            contenedor.appendChild(tarjetaProducto);
-            const btnAgregarAlCarrito = document.getElementById("btnAgregarAlCarrito" + producto.id);
+                `
+            contenedor.appendChild(tarjetaProducto)
+            const btnAgregarAlCarrito = document.getElementById("btnAgregarAlCarrito" + producto.id)
             btnAgregarAlCarrito.addEventListener("click", (e) => {
-                agregarProductoAlCarrito(e, carrito, productos);
+                agregarProductoAlCarrito(e, carrito, productos)
                 Swal.fire({
                     icon: "success",
                     title: "Carrito",
                     text: "producto agregado al carrito exitosamente",
-                });
-            });
+                })
+            })
         }
     })
 }
 
+
 // Carrito 
 function agregarProductoAlCarrito(e, carrito, productos) {
-    const idProductoAgregado = Number(e.target.id.substring(19));
-    const productoExisteEnCarrito = carrito.findIndex(producto => producto.id === idProductoAgregado);
-    const productoBuscado = productos.find(producto => producto.id === idProductoAgregado);
+    const idProductoAgregado = Number(e.target.id.substring(19))
+    const productoExisteEnCarrito = carrito.findIndex(producto => producto.id === idProductoAgregado)
+    const productoBuscado = productos.find(producto => producto.id === idProductoAgregado)
     if (productoExisteEnCarrito !== -1) {
         carrito[productoExisteEnCarrito].cantidad++
         carrito[productoExisteEnCarrito].subtotal = carrito[productoExisteEnCarrito].precio * carrito[productoExisteEnCarrito].cantidad
@@ -172,25 +159,26 @@ function agregarProductoAlCarrito(e, carrito, productos) {
             cantidad: 1
         })
     }
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    return carrito;
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    return carrito
 }
 
 // listar carrito
 function listarCarrito(carrito, contenedor) {
-    contenedorTarjetas = document.getElementById("containerTarjetas");
-    contenedorTarjetas.className = "tarjeta-carrito";
+    carrito = cargarCarrito()
+    contenedorTarjetas = document.getElementById("containerTarjetas")
+    contenedorTarjetas.className = "tarjeta-carrito"
     contenedorTarjetas.innerHTML =
         `
     <h2 class="share-tech-regular">CARRITO</h2>
-    `;
-    let precioTotal = 0;
-    const contenedorSort = document.getElementById("opcionSort");
-    contenedorSort.style.display = "none";
+    `
+    let precioTotal = 0
+    const contenedorSort = document.getElementById("opcionSort")
+    contenedorSort.style.display = "none"
     carrito.forEach(producto => {
-        const tarjetaProducto = document.createElement("div");
-        tarjetaProducto.className = "tarjeta-producto-carrito";
-        const subtotal = producto.precio * producto.cantidad;
+        const tarjetaProducto = document.createElement("div")
+        tarjetaProducto.className = "tarjeta-producto-carrito"
+        const subtotal = producto.precio * producto.cantidad
         tarjetaProducto.innerHTML =
             `
             <img id="imagenTarjeta" src=${producto.imagen} alt="Motherboard" class="tarjeta-carrito-imagen">
@@ -199,93 +187,97 @@ function listarCarrito(carrito, contenedor) {
             <p class="tarjeta-carrito-precio">precio por unidad: $${producto.precio}</p>
             <p class="tarjeta-carrito-precio">subtotal: $${subtotal}</p>
             <button class="tarjeta-carrito-btn" id="eliminar${producto.id}">eliminar</button>
-            `;
-        contenedor.appendChild(tarjetaProducto);
-        const botonEliminar = document.getElementById(`eliminar${producto.id}`);
+            `
+        contenedor.appendChild(tarjetaProducto)
+        const botonEliminar = document.getElementById(`eliminar${producto.id}`)
         botonEliminar.onclick = () => {
-            const productoAEliminar = carrito.findIndex(prod => prod.id === producto.id);
+            const productoAEliminar = carrito.findIndex(prod => prod.id === producto.id)
             if (productoAEliminar !== -1) {
-                carrito.splice(productoAEliminar, 1);
-                localStorage.setItem("carrito", JSON.stringify(carrito));
-                listarCarrito(carrito, contenedorTarjetas);
+                carrito.splice(productoAEliminar, 1)
+                localStorage.setItem("carrito", JSON.stringify(carrito))
+                listarCarrito(carrito, contenedorTarjetas)
             }
-        };
-        precioTotal += subtotal;
-    });
-    const tarjetaPrecioTotal = document.createElement("div");
-    tarjetaPrecioTotal.className = "tarjeta-producto-carrito";
+        }
+        precioTotal += subtotal
+    })
+    const tarjetaPrecioTotal = document.createElement("div")
+    tarjetaPrecioTotal.className = "tarjeta-producto-carrito"
     tarjetaPrecioTotal.innerHTML =
         `
     <div class="carrito-comprar>
     <p">TOTAL: ${precioTotal} </p>
     <button class="tarjeta-carrito-btn" id="btnComprarCarrito">comprar</button>
     </div>
-    `;
-    contenedor.appendChild(tarjetaPrecioTotal);
-    let botonComprarCarrito = document.getElementById("btnComprarCarrito");
+    `
+    contenedor.appendChild(tarjetaPrecioTotal)
+    let botonComprarCarrito = document.getElementById("btnComprarCarrito")
     botonComprarCarrito.onclick = () => {
         if (carrito.length < 1) {
             Swal.fire({
                 icon: "error",
                 title: "Carrito vacío",
                 text: "No hay ningún producto en el carrito",
-            });
+            })
         } else {
             carrito.forEach(productoCarrito => {
-                const productoEnStock = productos.find(producto => producto.id === productoCarrito.id);
+                const productoEnStock = productos.find(producto => producto.id === productoCarrito.id)
                 if (productoEnStock) {
-                    productoEnStock.stock -= productoCarrito.cantidad;
+                    productoEnStock.stock -= productoCarrito.cantidad
                 }
-            });
-            localStorage.removeItem("carrito");
-            carrito = [];
-            vaciarDiv();
+            })
+            localStorage.removeItem("carrito")
+            carrito = []
+            vaciarDiv()
 
             Swal.fire({
                 icon: "success",
                 title: "Compra Exitosa",
                 text: "Le hemos enviado los detalles de la compra a su correo electrónico.",
-            });
-            
+            })
         }
     }
 }
 
+function cargarCarrito() {
+    return carrito = JSON.parse(localStorage.getItem("carrito")) || []
+}
+
+
+
 // funcion principal
 function principal() {
 
-    let carrito = [];
-    let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"));
+    let carrito = []
+    let carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"))
     if (carritoLocalStorage) {
-        carrito = carritoLocalStorage;
+        carrito = carritoLocalStorage
     }
-    listarTodos(productos, carrito);
+    listarTodos(productos, carrito)
     //boton carrito
-    const btnCarrito = document.getElementById("btnCarrito");
-    btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas);
-
+    const btnCarrito = document.getElementById("btnCarrito")
+    btnCarrito.onclick = () => listarCarrito(carrito, contenedorTarjetas)
     //boton todos los productos
-    const btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos");
-    btnMenuPrincipalProductos.onclick = () => listarTodos(productos, carrito);
+    const btnMenuPrincipalProductos = document.getElementById("btnMenuPrincipalProductos")
+    btnMenuPrincipalProductos.onclick = () => listarTodos(productos, carrito)
     //boton motherboards
-    const btnCategoriasMotherboards = document.getElementById("btnCategoriasMotherboard");
-    btnCategoriasMotherboards.onclick = () => filtrarPorCategoria(productos, "motherboard", carrito);
+    const btnCategoriasMotherboards = document.getElementById("btnCategoriasMotherboard")
+    btnCategoriasMotherboards.onclick = () => filtrarPorCategoria(productos, "motherboard", carrito)
     //boton procesadores
-    const btnCategoriasProcesador = document.getElementById("btnCategoriasProcesador");
-    btnCategoriasProcesador.onclick = () => filtrarPorCategoria(productos, "procesador", carrito);
+    const btnCategoriasProcesador = document.getElementById("btnCategoriasProcesador")
+    btnCategoriasProcesador.onclick = () => filtrarPorCategoria(productos, "procesador", carrito)
     //boton memorias
-    const btnCategoriasMemoria = document.getElementById("btnCategoriasMemoria");
-    btnCategoriasMemoria.onclick = () => filtrarPorCategoria(productos, "memoria RAM", carrito);
+    const btnCategoriasMemoria = document.getElementById("btnCategoriasMemoria")
+    btnCategoriasMemoria.onclick = () => filtrarPorCategoria(productos, "memoria RAM", carrito)
     // selector opciones sort
-    const opcion = document.getElementsByClassName("selectorSort")[0];
-    opcion.onclick = () => opcionSort(opcion, carrito);
+    const opcion = document.getElementsByClassName("selectorSort")[0]
+    opcion.onclick = () => opcionSort(opcion, carrito)
     //input busqueda
-    const inputBusqueda = document.getElementById("inputBuscar");
+    const inputBusqueda = document.getElementById("inputBuscar")
     inputBusqueda.addEventListener("keydown", function (event) {
-        event.key === "Enter" && event.preventDefault();
-        const textoBusqueda = inputBusqueda.value.toLowerCase();
-        buscarProductos(productos, textoBusqueda, carrito);
+        event.key === "Enter" && event.preventDefault()
+        const textoBusqueda = inputBusqueda.value.toLowerCase()
+        buscarProductos(productos, textoBusqueda, carrito)
     })
 }
 
-principal();
+principal()
